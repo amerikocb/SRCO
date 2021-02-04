@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Pe.Stracon.SGCO", "Pe.Stracon.SGCO\", "{226D1831-358D-4F6A-9C04-5FACF358BC0B}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		ProjectReferences = "{07df1d21-e7c1-49ba-8e9f-ec7090270e60}|Pe.Stracon.DataAccess.dll;{9024043f-f234-41ac-b18b-5ef7b16ba3f6}|Pe.Stracon.Models.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_55038"
+		Debug.AspNetCompiler.PhysicalPath = "Pe.Stracon.SGCO\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55038\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_55038"
+		Release.AspNetCompiler.PhysicalPath = "Pe.Stracon.SGCO\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55038\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "55038"
+		SlnRelativePath = "Pe.Stracon.SGCO\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pe.Stracon.DataAccess", "Pe.Stracon.DataAccess\Pe.Stracon.DataAccess.csproj", "{07DF1D21-E7C1-49BA-8E9F-EC7090270E60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pe.Stracon.Models", "Pe.Stracon.Models\Pe.Stracon.Models.csproj", "{9024043F-F234-41AC-B18B-5EF7B16BA3F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Datos", "Datos", "{68CE8F79-4B82-4327-9375-124C116DBF12}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{226D1831-358D-4F6A-9C04-5FACF358BC0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{226D1831-358D-4F6A-9C04-5FACF358BC0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{226D1831-358D-4F6A-9C04-5FACF358BC0B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{226D1831-358D-4F6A-9C04-5FACF358BC0B}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{07DF1D21-E7C1-49BA-8E9F-EC7090270E60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07DF1D21-E7C1-49BA-8E9F-EC7090270E60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07DF1D21-E7C1-49BA-8E9F-EC7090270E60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07DF1D21-E7C1-49BA-8E9F-EC7090270E60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9024043F-F234-41AC-B18B-5EF7B16BA3F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9024043F-F234-41AC-B18B-5EF7B16BA3F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9024043F-F234-41AC-B18B-5EF7B16BA3F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9024043F-F234-41AC-B18B-5EF7B16BA3F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{07DF1D21-E7C1-49BA-8E9F-EC7090270E60} = {68CE8F79-4B82-4327-9375-124C116DBF12}
+		{9024043F-F234-41AC-B18B-5EF7B16BA3F6} = {68CE8F79-4B82-4327-9375-124C116DBF12}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7EF9B790-C3EA-43F1-9D26-158554CEABB6}
+	EndGlobalSection
+EndGlobal

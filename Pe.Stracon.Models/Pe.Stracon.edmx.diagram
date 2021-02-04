@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="099a8ce4a49048ae999af1a9ec4ea384" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="STRACON_SGCOModel.Atributo" Width="1.5" PointX="12.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.CategoriaValorizacion" Width="1.5" PointX="10" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.Clase" Width="1.5" PointX="10.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.Grupo" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.Requerimiento" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.Segmento" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.TipoMaterial" Width="1.5" PointX="7.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.TabClaMaterial" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.PARAMETRO" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.PARAMETRO_SECCION" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.PARAMETRO_VALOR" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="STRACON_SGCOModel.FK_Atributo_Clase" ManuallyRouted="false" />
+        <AssociationConnector Association="STRACON_SGCOModel.FK_CategoriaValorizacion_TipoMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="STRACON_SGCOModel.FK_Clase_Grupo" ManuallyRouted="false" />
+        <AssociationConnector Association="STRACON_SGCOModel.FK_Grupo_Segmento" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.ItemAtributo" Width="1.5" PointX="5.25" PointY="5.125" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.Adjunto" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="STRACON_SGCOModel.FK_Adjunto_Requerimiento" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.RolesAceptados" Width="1.5" PointX="10.375" PointY="11.75" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.ClaseONU" Width="1.5" PointX="16.875" PointY="5" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.FamiliaONU" Width="1.5" PointX="14.625" PointY="4.875" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.SegmentoONU" Width="1.5" PointX="12.375" PointY="5.125" />
+        <AssociationConnector Association="STRACON_SGCOModel.FK_ClaseONU_FamiliaONU" />
+        <AssociationConnector Association="STRACON_SGCOModel.FK_FamiliaONU_SegementoONU" />
+        <EntityTypeShape EntityType="STRACON_SGCOModel.DetalleRequerimiento" Width="1.5" PointX="19.125" PointY="2.375" />
+        <AssociationConnector Association="STRACON_SGCOModel.FK_DetalleRequerimiento_ClaseONU" />
+        <AssociationConnector Association="STRACON_SGCOModel.FK_DetalleRequerimiento_FamiliaONU" />
+        <AssociationConnector Association="STRACON_SGCOModel.FK_DetalleRequerimiento_Requerimiento" />
+        <AssociationConnector Association="STRACON_SGCOModel.FK_DetalleRequerimiento_SegmentoONU" />
+        <AssociationConnector Association="STRACON_SGCOModel.FK_ItemAtributo_DetalleRequerimiento" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

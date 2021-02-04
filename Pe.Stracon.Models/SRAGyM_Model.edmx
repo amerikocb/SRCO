@@ -1,0 +1,682 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbSRAGyMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="N_ID_PROFILE" />
+          </Key>
+          <Property Name="N_ID_PROFILE" Type="int" Nullable="false" />
+          <Property Name="S_NAME" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="S_DESCRIPTION" Type="varchar" MaxLength="250" />
+          <Property Name="S_STATUS_REGISTER" Type="char" MaxLength="1" />
+          <Property Name="S_USER_CREATION" Type="varchar" MaxLength="30" />
+          <Property Name="D_DATE_CREATION" Type="datetime" />
+          <Property Name="S_TERMINAL_CREATION" Type="varchar" MaxLength="40" />
+          <Property Name="S_USER_MODIFICATION" Type="varchar" MaxLength="30" />
+          <Property Name="D_DATE_MODIFICATION" Type="datetime" />
+          <Property Name="S_TERMINAL_MODIFICATION" Type="varchar" MaxLength="40" />
+          <Property Name="S_OBSERVATION" Type="varchar" MaxLength="250" />
+          <Property Name="D_DATE_TERMINATE_REGISTER" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Profile_Role">
+          <Key>
+            <PropertyRef Name="N_ID_PROFILE_ROLE" />
+          </Key>
+          <Property Name="N_ID_PROFILE_ROLE" Type="int" Nullable="false" />
+          <Property Name="N_ID_PROFILE" Type="int" Nullable="false" />
+          <Property Name="N_ID_ROLE" Type="int" Nullable="false" />
+          <Property Name="S_STATUS_REGISTER" Type="char" MaxLength="1" />
+          <Property Name="S_USER_CREATION" Type="varchar" MaxLength="30" />
+          <Property Name="D_DATE_CREATION" Type="datetime" />
+          <Property Name="S_TERMINAL_CREATION" Type="varchar" MaxLength="40" />
+          <Property Name="S_USER_MODIFICATION" Type="varchar" MaxLength="30" />
+          <Property Name="D_DATE_MODIFICATION" Type="datetime" />
+          <Property Name="S_TERMINAL_MODIFICATION" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="N_ID_ROLE" />
+          </Key>
+          <Property Name="N_ID_ROLE" Type="int" Nullable="false" />
+          <Property Name="S_NAME" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="S_DESCRIPTION" Type="varchar" MaxLength="250" />
+          <Property Name="S_TYPE" Type="char" MaxLength="2" />
+          <Property Name="S_STATUS_REGISTER" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="S_USER_CREATION" Type="varchar" MaxLength="30" />
+          <Property Name="D_DATE_CREATION" Type="datetime" Nullable="false" />
+          <Property Name="S_TERMINAL_CREATION" Type="varchar" MaxLength="40" />
+          <Property Name="S_USER_MODIFICATION" Type="varchar" MaxLength="30" />
+          <Property Name="D_DATE_MODIFICATION" Type="datetime" />
+          <Property Name="S_TERMINAL_MODIFICATION" Type="varchar" MaxLength="40" />
+          <Property Name="S_OBSERVATION" Type="varchar" MaxLength="250" />
+          <Property Name="D_DATE_TERMINATE_REGISTER" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Role_System">
+          <Key>
+            <PropertyRef Name="N_ID_ROLE_SYSTEM" />
+          </Key>
+          <Property Name="N_ID_ROLE_SYSTEM" Type="int" Nullable="false" />
+          <Property Name="N_ID_SYSTEM" Type="int" />
+          <Property Name="N_ID_ROLE" Type="int" />
+          <Property Name="S_STATUS_REGISTER" Type="char" MaxLength="1" />
+          <Property Name="S_USER_CREATION" Type="varchar" MaxLength="30" />
+          <Property Name="D_DATE_CREATION" Type="datetime" />
+          <Property Name="S_TERMINAL_CREATION" Type="varchar" MaxLength="40" />
+          <Property Name="S_USER_MODIFICATION" Type="varchar" MaxLength="30" />
+          <Property Name="D_DATE_MODIFICATION" Type="datetime" />
+          <Property Name="S_TERMINAL_MODIFICATION" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="SystemSRA">
+          <Key>
+            <PropertyRef Name="N_ID_SYSTEM" />
+          </Key>
+          <Property Name="N_ID_SYSTEM" Type="int" Nullable="false" />
+          <Property Name="S_NAME" Type="varchar" MaxLength="250" />
+          <Property Name="S_DESCRIPTION" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="S_STATUS_REGISTER" Type="char" MaxLength="1" />
+          <Property Name="S_RUTE" Type="varchar" MaxLength="250" />
+          <Property Name="S_USER_CREATION" Type="varchar" MaxLength="30" />
+          <Property Name="D_DATE_CREATION" Type="datetime" />
+          <Property Name="S_TERMINAL_CREATION" Type="varchar" MaxLength="40" />
+          <Property Name="S_USER_MODIFICATION" Type="varchar" MaxLength="30" />
+          <Property Name="D_DATE_MODIFICATION" Type="datetime" />
+          <Property Name="S_TERMINAL_MODIFICATION" Type="varchar" MaxLength="40" />
+          <Property Name="S_OBSERVATION" Type="varchar" MaxLength="250" />
+          <Property Name="S_LANGUAGE" Type="char" MaxLength="18" />
+          <Property Name="D_DATE_TERMINATE_REGISTER" Type="datetime" />
+          <Property Name="S_TOKEN" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="User_Profile">
+          <Key>
+            <PropertyRef Name="N_ID_USER_PROFILE" />
+          </Key>
+          <Property Name="N_ID_USER_PROFILE" Type="int" Nullable="false" />
+          <Property Name="N_ID_USER" Type="int" Nullable="false" />
+          <Property Name="N_ID_PROFILE" Type="int" Nullable="false" />
+          <Property Name="S_STATUS_REGISTER" Type="char" MaxLength="1" />
+          <Property Name="D_DATE_START_VALIDITY" Type="datetime" />
+          <Property Name="S_USER_CREATION" Type="varchar" MaxLength="30" />
+          <Property Name="D_DATE_CREATION" Type="datetime" />
+          <Property Name="S_TERMINAL_CREATION" Type="varchar" MaxLength="40" />
+          <Property Name="S_USER_MODIFICATION" Type="varchar" MaxLength="30" />
+          <Property Name="D_DATE_MODIFICATION" Type="datetime" />
+          <Property Name="S_TERMINAL_MODIFICATION" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="UserSRA">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+          </Key>
+          <Property Name="ID_USER" Type="int" Nullable="false" />
+          <Property Name="S_LAST_NAME" Type="varchar" MaxLength="250" />
+          <Property Name="S_LAST_NAME_1" Type="varchar" MaxLength="250" />
+          <Property Name="S_LAST_NAME_2" Type="varchar" MaxLength="250" />
+          <Property Name="S_NAME" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="S_FULL_NAME" Type="varchar" MaxLength="501" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="S_LOGIN" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="S_PASSWORD" Type="varchar" MaxLength="800" />
+          <Property Name="S_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="D_DATE_ACTIV_PASSWORD" Type="datetime" />
+          <Property Name="S_INDICATOR_CHANGE_PASSWORD" Type="bit" />
+          <Property Name="S_INDICATOR_ASSOCIATED_AD" Type="bit" />
+          <Property Name="S_TYPE_IDENTITY_DOCUMENT" Type="varchar" MaxLength="20" />
+          <Property Name="S_IP_ACCES_USER" Type="varchar" MaxLength="15" />
+          <Property Name="N_NUM_IDENTITY_DOC" Type="varchar" MaxLength="20" />
+          <Property Name="S_RED_USER" Type="varchar" MaxLength="250" />
+          <Property Name="S_DOMAIN_RED" Type="varchar" MaxLength="250" />
+          <Property Name="B_PHOTO_USER" Type="image" />
+          <Property Name="B_DIGITIZED_SIGNATURE" Type="binary" MaxLength="1" />
+          <Property Name="S_STATUS_REGISTER" Type="char" MaxLength="1" />
+          <Property Name="S_ACCES_TERMINAL" Type="varchar" MaxLength="40" />
+          <Property Name="S_DESCRIPTION_REASON_TERMINATE" Type="varchar" MaxLength="250" />
+          <Property Name="D_DATE_TERMINATE_REGISTER" Type="datetime" />
+          <Property Name="S_USER_CREATION" Type="varchar" MaxLength="30" />
+          <Property Name="D_DATE_CREATION" Type="datetime" />
+          <Property Name="S_TERMINAL_CREATION" Type="varchar" MaxLength="40" />
+          <Property Name="S_USER_MODIFICATION" Type="varchar" MaxLength="30" />
+          <Property Name="D_DATE_MODIFICATION" Type="datetime" />
+          <Property Name="S_TERMINAL_MODIFICATION" Type="varchar" MaxLength="40" />
+          <Property Name="S_OBSERVATION" Type="varchar" MaxLength="250" />
+          <Property Name="S_INDICATOR_ASSOCIATED_AD_TEXT" Type="varchar" MaxLength="2" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__User_Prof__N_ID___6383C8BA">
+          <End Role="UserSRA" Type="Self.UserSRA" Multiplicity="1" />
+          <End Role="User_Profile" Type="Self.User_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSRA">
+              <PropertyRef Name="ID_USER" />
+            </Principal>
+            <Dependent Role="User_Profile">
+              <PropertyRef Name="N_ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User_Prof__N_ID___6477ECF3">
+          <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+          <End Role="User_Profile" Type="Self.User_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="N_ID_PROFILE" />
+            </Principal>
+            <Dependent Role="User_Profile">
+              <PropertyRef Name="N_ID_PROFILE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profile_Role_Profile">
+          <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+          <End Role="Profile_Role" Type="Self.Profile_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="N_ID_PROFILE" />
+            </Principal>
+            <Dependent Role="Profile_Role">
+              <PropertyRef Name="N_ID_PROFILE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profile_Role_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Profile_Role" Type="Self.Profile_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="N_ID_ROLE" />
+            </Principal>
+            <Dependent Role="Profile_Role">
+              <PropertyRef Name="N_ID_ROLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_System_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Role_System" Type="Self.Role_System" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="N_ID_ROLE" />
+            </Principal>
+            <Dependent Role="Role_System">
+              <PropertyRef Name="N_ID_ROLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_System_SystemSRA">
+          <End Role="SystemSRA" Type="Self.SystemSRA" Multiplicity="0..1" />
+          <End Role="Role_System" Type="Self.Role_System" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemSRA">
+              <PropertyRef Name="N_ID_SYSTEM" />
+            </Principal>
+            <Dependent Role="Role_System">
+              <PropertyRef Name="N_ID_SYSTEM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbSRAGyMModelStoreContainer">
+          <EntitySet Name="Profile" EntityType="Self.Profile" Schema="SECU" store:Type="Tables" />
+          <EntitySet Name="Profile_Role" EntityType="Self.Profile_Role" Schema="SECU" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="SECU" store:Type="Tables" />
+          <EntitySet Name="Role_System" EntityType="Self.Role_System" Schema="SECU" store:Type="Tables" />
+          <EntitySet Name="SystemSRA" EntityType="Self.SystemSRA" Schema="SECU" store:Type="Tables" />
+          <EntitySet Name="User_Profile" EntityType="Self.User_Profile" Schema="SECU" store:Type="Tables" />
+          <EntitySet Name="UserSRA" EntityType="Self.UserSRA" Schema="SECU" store:Type="Tables" />
+          <AssociationSet Name="FK__User_Prof__N_ID___6383C8BA" Association="Self.FK__User_Prof__N_ID___6383C8BA">
+            <End Role="UserSRA" EntitySet="UserSRA" />
+            <End Role="User_Profile" EntitySet="User_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User_Prof__N_ID___6477ECF3" Association="Self.FK__User_Prof__N_ID___6477ECF3">
+            <End Role="Profile" EntitySet="Profile" />
+            <End Role="User_Profile" EntitySet="User_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profile_Role_Profile" Association="Self.FK_Profile_Role_Profile">
+            <End Role="Profile" EntitySet="Profile" />
+            <End Role="Profile_Role" EntitySet="Profile_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profile_Role_Role" Association="Self.FK_Profile_Role_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Profile_Role" EntitySet="Profile_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_System_Role" Association="Self.FK_Role_System_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Role_System" EntitySet="Role_System" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_System_SystemSRA" Association="Self.FK_Role_System_SystemSRA">
+            <End Role="SystemSRA" EntitySet="SystemSRA" />
+            <End Role="Role_System" EntitySet="Role_System" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbSRAGyMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="N_ID_PROFILE" />
+          </Key>
+          <Property Name="N_ID_PROFILE" Type="Int32" Nullable="false" />
+          <Property Name="S_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_DESCRIPTION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="S_STATUS_REGISTER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="S_USER_CREATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_CREATION" Type="DateTime" Precision="3" />
+          <Property Name="S_TERMINAL_CREATION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="S_USER_MODIFICATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_MODIFICATION" Type="DateTime" Precision="3" />
+          <Property Name="S_TERMINAL_MODIFICATION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="S_OBSERVATION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_TERMINATE_REGISTER" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User_Profile" Relationship="Self.FK__User_Prof__N_ID___6477ECF3" FromRole="Profile" ToRole="User_Profile" />
+          <NavigationProperty Name="Profile_Role" Relationship="Self.FK_Profile_Role_Profile" FromRole="Profile" ToRole="Profile_Role" />
+        </EntityType>
+        <EntityType Name="Profile_Role">
+          <Key>
+            <PropertyRef Name="N_ID_PROFILE_ROLE" />
+          </Key>
+          <Property Name="N_ID_PROFILE_ROLE" Type="Int32" Nullable="false" />
+          <Property Name="N_ID_PROFILE" Type="Int32" Nullable="false" />
+          <Property Name="N_ID_ROLE" Type="Int32" Nullable="false" />
+          <Property Name="S_STATUS_REGISTER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="S_USER_CREATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_CREATION" Type="DateTime" Precision="3" />
+          <Property Name="S_TERMINAL_CREATION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="S_USER_MODIFICATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_MODIFICATION" Type="DateTime" Precision="3" />
+          <Property Name="S_TERMINAL_MODIFICATION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Profile" Relationship="Self.FK_Profile_Role_Profile" FromRole="Profile_Role" ToRole="Profile" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Profile_Role_Role" FromRole="Profile_Role" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="N_ID_ROLE" />
+          </Key>
+          <Property Name="N_ID_ROLE" Type="Int32" Nullable="false" />
+          <Property Name="S_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_DESCRIPTION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="S_TYPE" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="S_STATUS_REGISTER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="S_USER_CREATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_CREATION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="S_TERMINAL_CREATION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="S_USER_MODIFICATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_MODIFICATION" Type="DateTime" Precision="3" />
+          <Property Name="S_TERMINAL_MODIFICATION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="S_OBSERVATION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_TERMINATE_REGISTER" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Profile_Role" Relationship="Self.FK_Profile_Role_Role" FromRole="Role" ToRole="Profile_Role" />
+          <NavigationProperty Name="Role_System" Relationship="Self.FK_Role_System_Role" FromRole="Role" ToRole="Role_System" />
+        </EntityType>
+        <EntityType Name="Role_System">
+          <Key>
+            <PropertyRef Name="N_ID_ROLE_SYSTEM" />
+          </Key>
+          <Property Name="N_ID_ROLE_SYSTEM" Type="Int32" Nullable="false" />
+          <Property Name="N_ID_SYSTEM" Type="Int32" />
+          <Property Name="N_ID_ROLE" Type="Int32" />
+          <Property Name="S_STATUS_REGISTER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="S_USER_CREATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_CREATION" Type="DateTime" Precision="3" />
+          <Property Name="S_TERMINAL_CREATION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="S_USER_MODIFICATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_MODIFICATION" Type="DateTime" Precision="3" />
+          <Property Name="S_TERMINAL_MODIFICATION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Role_System_Role" FromRole="Role_System" ToRole="Role" />
+          <NavigationProperty Name="SystemSRA" Relationship="Self.FK_Role_System_SystemSRA" FromRole="Role_System" ToRole="SystemSRA" />
+        </EntityType>
+        <EntityType Name="SystemSRA">
+          <Key>
+            <PropertyRef Name="N_ID_SYSTEM" />
+          </Key>
+          <Property Name="N_ID_SYSTEM" Type="Int32" Nullable="false" />
+          <Property Name="S_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="S_DESCRIPTION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_STATUS_REGISTER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="S_RUTE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="S_USER_CREATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_CREATION" Type="DateTime" Precision="3" />
+          <Property Name="S_TERMINAL_CREATION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="S_USER_MODIFICATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_MODIFICATION" Type="DateTime" Precision="3" />
+          <Property Name="S_TERMINAL_MODIFICATION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="S_OBSERVATION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="S_LANGUAGE" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="D_DATE_TERMINATE_REGISTER" Type="DateTime" Precision="3" />
+          <Property Name="S_TOKEN" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Role_System" Relationship="Self.FK_Role_System_SystemSRA" FromRole="SystemSRA" ToRole="Role_System" />
+        </EntityType>
+        <EntityType Name="User_Profile">
+          <Key>
+            <PropertyRef Name="N_ID_USER_PROFILE" />
+          </Key>
+          <Property Name="N_ID_USER_PROFILE" Type="Int32" Nullable="false" />
+          <Property Name="N_ID_USER" Type="Int32" Nullable="false" />
+          <Property Name="N_ID_PROFILE" Type="Int32" Nullable="false" />
+          <Property Name="S_STATUS_REGISTER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="D_DATE_START_VALIDITY" Type="DateTime" Precision="3" />
+          <Property Name="S_USER_CREATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_CREATION" Type="DateTime" Precision="3" />
+          <Property Name="S_TERMINAL_CREATION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="S_USER_MODIFICATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_MODIFICATION" Type="DateTime" Precision="3" />
+          <Property Name="S_TERMINAL_MODIFICATION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Profile" Relationship="Self.FK__User_Prof__N_ID___6477ECF3" FromRole="User_Profile" ToRole="Profile" />
+          <NavigationProperty Name="UserSRA" Relationship="Self.FK__User_Prof__N_ID___6383C8BA" FromRole="User_Profile" ToRole="UserSRA" />
+        </EntityType>
+        <EntityType Name="UserSRA">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+          </Key>
+          <Property Name="ID_USER" Type="Int32" Nullable="false" />
+          <Property Name="S_LAST_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="S_LAST_NAME_1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="S_LAST_NAME_2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="S_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_FULL_NAME" Type="String" MaxLength="501" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="S_LOGIN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_PASSWORD" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="S_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_ACTIV_PASSWORD" Type="DateTime" Precision="3" />
+          <Property Name="S_INDICATOR_CHANGE_PASSWORD" Type="Boolean" />
+          <Property Name="S_INDICATOR_ASSOCIATED_AD" Type="Boolean" />
+          <Property Name="S_TYPE_IDENTITY_DOCUMENT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="S_IP_ACCES_USER" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="N_NUM_IDENTITY_DOC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="S_RED_USER" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="S_DOMAIN_RED" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="B_PHOTO_USER" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="B_DIGITIZED_SIGNATURE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="S_STATUS_REGISTER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="S_ACCES_TERMINAL" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="S_DESCRIPTION_REASON_TERMINATE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_TERMINATE_REGISTER" Type="DateTime" Precision="3" />
+          <Property Name="S_USER_CREATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_CREATION" Type="DateTime" Precision="3" />
+          <Property Name="S_TERMINAL_CREATION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="S_USER_MODIFICATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="D_DATE_MODIFICATION" Type="DateTime" Precision="3" />
+          <Property Name="S_TERMINAL_MODIFICATION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="S_OBSERVATION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="S_INDICATOR_ASSOCIATED_AD_TEXT" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="User_Profile" Relationship="Self.FK__User_Prof__N_ID___6383C8BA" FromRole="UserSRA" ToRole="User_Profile" />
+        </EntityType>
+        <Association Name="FK__User_Prof__N_ID___6477ECF3">
+          <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+          <End Role="User_Profile" Type="Self.User_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="N_ID_PROFILE" />
+            </Principal>
+            <Dependent Role="User_Profile">
+              <PropertyRef Name="N_ID_PROFILE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profile_Role_Profile">
+          <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+          <End Role="Profile_Role" Type="Self.Profile_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="N_ID_PROFILE" />
+            </Principal>
+            <Dependent Role="Profile_Role">
+              <PropertyRef Name="N_ID_PROFILE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profile_Role_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Profile_Role" Type="Self.Profile_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="N_ID_ROLE" />
+            </Principal>
+            <Dependent Role="Profile_Role">
+              <PropertyRef Name="N_ID_ROLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_System_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Role_System" Type="Self.Role_System" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="N_ID_ROLE" />
+            </Principal>
+            <Dependent Role="Role_System">
+              <PropertyRef Name="N_ID_ROLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_System_SystemSRA">
+          <End Role="SystemSRA" Type="Self.SystemSRA" Multiplicity="0..1" />
+          <End Role="Role_System" Type="Self.Role_System" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemSRA">
+              <PropertyRef Name="N_ID_SYSTEM" />
+            </Principal>
+            <Dependent Role="Role_System">
+              <PropertyRef Name="N_ID_SYSTEM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User_Prof__N_ID___6383C8BA">
+          <End Role="UserSRA" Type="Self.UserSRA" Multiplicity="1" />
+          <End Role="User_Profile" Type="Self.User_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSRA">
+              <PropertyRef Name="ID_USER" />
+            </Principal>
+            <Dependent Role="User_Profile">
+              <PropertyRef Name="N_ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbSRAGyMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Profile" EntityType="Self.Profile" />
+          <EntitySet Name="Profile_Role" EntityType="Self.Profile_Role" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Role_System" EntityType="Self.Role_System" />
+          <EntitySet Name="SystemSRA" EntityType="Self.SystemSRA" />
+          <EntitySet Name="User_Profile" EntityType="Self.User_Profile" />
+          <EntitySet Name="UserSRA" EntityType="Self.UserSRA" />
+          <AssociationSet Name="FK__User_Prof__N_ID___6477ECF3" Association="Self.FK__User_Prof__N_ID___6477ECF3">
+            <End Role="Profile" EntitySet="Profile" />
+            <End Role="User_Profile" EntitySet="User_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profile_Role_Profile" Association="Self.FK_Profile_Role_Profile">
+            <End Role="Profile" EntitySet="Profile" />
+            <End Role="Profile_Role" EntitySet="Profile_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profile_Role_Role" Association="Self.FK_Profile_Role_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Profile_Role" EntitySet="Profile_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_System_Role" Association="Self.FK_Role_System_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Role_System" EntitySet="Role_System" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_System_SystemSRA" Association="Self.FK_Role_System_SystemSRA">
+            <End Role="SystemSRA" EntitySet="SystemSRA" />
+            <End Role="Role_System" EntitySet="Role_System" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User_Prof__N_ID___6383C8BA" Association="Self.FK__User_Prof__N_ID___6383C8BA">
+            <End Role="UserSRA" EntitySet="UserSRA" />
+            <End Role="User_Profile" EntitySet="User_Profile" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbSRAGyMModelStoreContainer" CdmEntityContainer="dbSRAGyMEntities">
+          <EntitySetMapping Name="Profile">
+            <EntityTypeMapping TypeName="dbSRAGyMModel.Profile">
+              <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="N_ID_PROFILE" ColumnName="N_ID_PROFILE" />
+                <ScalarProperty Name="S_NAME" ColumnName="S_NAME" />
+                <ScalarProperty Name="S_DESCRIPTION" ColumnName="S_DESCRIPTION" />
+                <ScalarProperty Name="S_STATUS_REGISTER" ColumnName="S_STATUS_REGISTER" />
+                <ScalarProperty Name="S_USER_CREATION" ColumnName="S_USER_CREATION" />
+                <ScalarProperty Name="D_DATE_CREATION" ColumnName="D_DATE_CREATION" />
+                <ScalarProperty Name="S_TERMINAL_CREATION" ColumnName="S_TERMINAL_CREATION" />
+                <ScalarProperty Name="S_USER_MODIFICATION" ColumnName="S_USER_MODIFICATION" />
+                <ScalarProperty Name="D_DATE_MODIFICATION" ColumnName="D_DATE_MODIFICATION" />
+                <ScalarProperty Name="S_TERMINAL_MODIFICATION" ColumnName="S_TERMINAL_MODIFICATION" />
+                <ScalarProperty Name="S_OBSERVATION" ColumnName="S_OBSERVATION" />
+                <ScalarProperty Name="D_DATE_TERMINATE_REGISTER" ColumnName="D_DATE_TERMINATE_REGISTER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profile_Role">
+            <EntityTypeMapping TypeName="dbSRAGyMModel.Profile_Role">
+              <MappingFragment StoreEntitySet="Profile_Role">
+                <ScalarProperty Name="N_ID_PROFILE_ROLE" ColumnName="N_ID_PROFILE_ROLE" />
+                <ScalarProperty Name="N_ID_PROFILE" ColumnName="N_ID_PROFILE" />
+                <ScalarProperty Name="N_ID_ROLE" ColumnName="N_ID_ROLE" />
+                <ScalarProperty Name="S_STATUS_REGISTER" ColumnName="S_STATUS_REGISTER" />
+                <ScalarProperty Name="S_USER_CREATION" ColumnName="S_USER_CREATION" />
+                <ScalarProperty Name="D_DATE_CREATION" ColumnName="D_DATE_CREATION" />
+                <ScalarProperty Name="S_TERMINAL_CREATION" ColumnName="S_TERMINAL_CREATION" />
+                <ScalarProperty Name="S_USER_MODIFICATION" ColumnName="S_USER_MODIFICATION" />
+                <ScalarProperty Name="D_DATE_MODIFICATION" ColumnName="D_DATE_MODIFICATION" />
+                <ScalarProperty Name="S_TERMINAL_MODIFICATION" ColumnName="S_TERMINAL_MODIFICATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="dbSRAGyMModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="N_ID_ROLE" ColumnName="N_ID_ROLE" />
+                <ScalarProperty Name="S_NAME" ColumnName="S_NAME" />
+                <ScalarProperty Name="S_DESCRIPTION" ColumnName="S_DESCRIPTION" />
+                <ScalarProperty Name="S_TYPE" ColumnName="S_TYPE" />
+                <ScalarProperty Name="S_STATUS_REGISTER" ColumnName="S_STATUS_REGISTER" />
+                <ScalarProperty Name="S_USER_CREATION" ColumnName="S_USER_CREATION" />
+                <ScalarProperty Name="D_DATE_CREATION" ColumnName="D_DATE_CREATION" />
+                <ScalarProperty Name="S_TERMINAL_CREATION" ColumnName="S_TERMINAL_CREATION" />
+                <ScalarProperty Name="S_USER_MODIFICATION" ColumnName="S_USER_MODIFICATION" />
+                <ScalarProperty Name="D_DATE_MODIFICATION" ColumnName="D_DATE_MODIFICATION" />
+                <ScalarProperty Name="S_TERMINAL_MODIFICATION" ColumnName="S_TERMINAL_MODIFICATION" />
+                <ScalarProperty Name="S_OBSERVATION" ColumnName="S_OBSERVATION" />
+                <ScalarProperty Name="D_DATE_TERMINATE_REGISTER" ColumnName="D_DATE_TERMINATE_REGISTER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role_System">
+            <EntityTypeMapping TypeName="dbSRAGyMModel.Role_System">
+              <MappingFragment StoreEntitySet="Role_System">
+                <ScalarProperty Name="N_ID_ROLE_SYSTEM" ColumnName="N_ID_ROLE_SYSTEM" />
+                <ScalarProperty Name="N_ID_SYSTEM" ColumnName="N_ID_SYSTEM" />
+                <ScalarProperty Name="N_ID_ROLE" ColumnName="N_ID_ROLE" />
+                <ScalarProperty Name="S_STATUS_REGISTER" ColumnName="S_STATUS_REGISTER" />
+                <ScalarProperty Name="S_USER_CREATION" ColumnName="S_USER_CREATION" />
+                <ScalarProperty Name="D_DATE_CREATION" ColumnName="D_DATE_CREATION" />
+                <ScalarProperty Name="S_TERMINAL_CREATION" ColumnName="S_TERMINAL_CREATION" />
+                <ScalarProperty Name="S_USER_MODIFICATION" ColumnName="S_USER_MODIFICATION" />
+                <ScalarProperty Name="D_DATE_MODIFICATION" ColumnName="D_DATE_MODIFICATION" />
+                <ScalarProperty Name="S_TERMINAL_MODIFICATION" ColumnName="S_TERMINAL_MODIFICATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemSRA">
+            <EntityTypeMapping TypeName="dbSRAGyMModel.SystemSRA">
+              <MappingFragment StoreEntitySet="SystemSRA">
+                <ScalarProperty Name="N_ID_SYSTEM" ColumnName="N_ID_SYSTEM" />
+                <ScalarProperty Name="S_NAME" ColumnName="S_NAME" />
+                <ScalarProperty Name="S_DESCRIPTION" ColumnName="S_DESCRIPTION" />
+                <ScalarProperty Name="S_STATUS_REGISTER" ColumnName="S_STATUS_REGISTER" />
+                <ScalarProperty Name="S_RUTE" ColumnName="S_RUTE" />
+                <ScalarProperty Name="S_USER_CREATION" ColumnName="S_USER_CREATION" />
+                <ScalarProperty Name="D_DATE_CREATION" ColumnName="D_DATE_CREATION" />
+                <ScalarProperty Name="S_TERMINAL_CREATION" ColumnName="S_TERMINAL_CREATION" />
+                <ScalarProperty Name="S_USER_MODIFICATION" ColumnName="S_USER_MODIFICATION" />
+                <ScalarProperty Name="D_DATE_MODIFICATION" ColumnName="D_DATE_MODIFICATION" />
+                <ScalarProperty Name="S_TERMINAL_MODIFICATION" ColumnName="S_TERMINAL_MODIFICATION" />
+                <ScalarProperty Name="S_OBSERVATION" ColumnName="S_OBSERVATION" />
+                <ScalarProperty Name="S_LANGUAGE" ColumnName="S_LANGUAGE" />
+                <ScalarProperty Name="D_DATE_TERMINATE_REGISTER" ColumnName="D_DATE_TERMINATE_REGISTER" />
+                <ScalarProperty Name="S_TOKEN" ColumnName="S_TOKEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Profile">
+            <EntityTypeMapping TypeName="dbSRAGyMModel.User_Profile">
+              <MappingFragment StoreEntitySet="User_Profile">
+                <ScalarProperty Name="N_ID_USER_PROFILE" ColumnName="N_ID_USER_PROFILE" />
+                <ScalarProperty Name="N_ID_USER" ColumnName="N_ID_USER" />
+                <ScalarProperty Name="N_ID_PROFILE" ColumnName="N_ID_PROFILE" />
+                <ScalarProperty Name="S_STATUS_REGISTER" ColumnName="S_STATUS_REGISTER" />
+                <ScalarProperty Name="D_DATE_START_VALIDITY" ColumnName="D_DATE_START_VALIDITY" />
+                <ScalarProperty Name="S_USER_CREATION" ColumnName="S_USER_CREATION" />
+                <ScalarProperty Name="D_DATE_CREATION" ColumnName="D_DATE_CREATION" />
+                <ScalarProperty Name="S_TERMINAL_CREATION" ColumnName="S_TERMINAL_CREATION" />
+                <ScalarProperty Name="S_USER_MODIFICATION" ColumnName="S_USER_MODIFICATION" />
+                <ScalarProperty Name="D_DATE_MODIFICATION" ColumnName="D_DATE_MODIFICATION" />
+                <ScalarProperty Name="S_TERMINAL_MODIFICATION" ColumnName="S_TERMINAL_MODIFICATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSRA">
+            <EntityTypeMapping TypeName="dbSRAGyMModel.UserSRA">
+              <MappingFragment StoreEntitySet="UserSRA">
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="S_LAST_NAME" ColumnName="S_LAST_NAME" />
+                <ScalarProperty Name="S_LAST_NAME_1" ColumnName="S_LAST_NAME_1" />
+                <ScalarProperty Name="S_LAST_NAME_2" ColumnName="S_LAST_NAME_2" />
+                <ScalarProperty Name="S_NAME" ColumnName="S_NAME" />
+                <ScalarProperty Name="S_FULL_NAME" ColumnName="S_FULL_NAME" />
+                <ScalarProperty Name="S_LOGIN" ColumnName="S_LOGIN" />
+                <ScalarProperty Name="S_PASSWORD" ColumnName="S_PASSWORD" />
+                <ScalarProperty Name="S_EMAIL" ColumnName="S_EMAIL" />
+                <ScalarProperty Name="D_DATE_ACTIV_PASSWORD" ColumnName="D_DATE_ACTIV_PASSWORD" />
+                <ScalarProperty Name="S_INDICATOR_CHANGE_PASSWORD" ColumnName="S_INDICATOR_CHANGE_PASSWORD" />
+                <ScalarProperty Name="S_INDICATOR_ASSOCIATED_AD" ColumnName="S_INDICATOR_ASSOCIATED_AD" />
+                <ScalarProperty Name="S_TYPE_IDENTITY_DOCUMENT" ColumnName="S_TYPE_IDENTITY_DOCUMENT" />
+                <ScalarProperty Name="S_IP_ACCES_USER" ColumnName="S_IP_ACCES_USER" />
+                <ScalarProperty Name="N_NUM_IDENTITY_DOC" ColumnName="N_NUM_IDENTITY_DOC" />
+                <ScalarProperty Name="S_RED_USER" ColumnName="S_RED_USER" />
+                <ScalarProperty Name="S_DOMAIN_RED" ColumnName="S_DOMAIN_RED" />
+                <ScalarProperty Name="B_PHOTO_USER" ColumnName="B_PHOTO_USER" />
+                <ScalarProperty Name="B_DIGITIZED_SIGNATURE" ColumnName="B_DIGITIZED_SIGNATURE" />
+                <ScalarProperty Name="S_STATUS_REGISTER" ColumnName="S_STATUS_REGISTER" />
+                <ScalarProperty Name="S_ACCES_TERMINAL" ColumnName="S_ACCES_TERMINAL" />
+                <ScalarProperty Name="S_DESCRIPTION_REASON_TERMINATE" ColumnName="S_DESCRIPTION_REASON_TERMINATE" />
+                <ScalarProperty Name="D_DATE_TERMINATE_REGISTER" ColumnName="D_DATE_TERMINATE_REGISTER" />
+                <ScalarProperty Name="S_USER_CREATION" ColumnName="S_USER_CREATION" />
+                <ScalarProperty Name="D_DATE_CREATION" ColumnName="D_DATE_CREATION" />
+                <ScalarProperty Name="S_TERMINAL_CREATION" ColumnName="S_TERMINAL_CREATION" />
+                <ScalarProperty Name="S_USER_MODIFICATION" ColumnName="S_USER_MODIFICATION" />
+                <ScalarProperty Name="D_DATE_MODIFICATION" ColumnName="D_DATE_MODIFICATION" />
+                <ScalarProperty Name="S_TERMINAL_MODIFICATION" ColumnName="S_TERMINAL_MODIFICATION" />
+                <ScalarProperty Name="S_OBSERVATION" ColumnName="S_OBSERVATION" />
+                <ScalarProperty Name="S_INDICATOR_ASSOCIATED_AD_TEXT" ColumnName="S_INDICATOR_ASSOCIATED_AD_TEXT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

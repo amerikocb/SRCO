@@ -1,0 +1,1341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="STRACON_SGCOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adjunto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRequerimiento" Type="int" Nullable="false" />
+          <Property Name="Seccion" Type="nvarchar" MaxLength="20" />
+          <Property Name="NombreArchivo" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="TamanioArchivo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Atributo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClase" Type="int" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Requerido" Type="bit" />
+        </EntityType>
+        <EntityType Name="CategoriaValorizacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTipoMaterial" Type="int" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Clase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdGrupo" Type="int" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ClaseONU">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFamiliaONU" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="DetalleRequerimiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRequerimiento" Type="int" Nullable="false" />
+          <Property Name="IdTipoMaterial" Type="int" Nullable="false" />
+          <Property Name="IdCategoriaValorizacion" Type="int" Nullable="false" />
+          <Property Name="GrupoArticulo" Type="nvarchar" MaxLength="50" />
+          <Property Name="UnidadMedida" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdSegmento" Type="int" Nullable="false" />
+          <Property Name="IdGrupo" Type="int" Nullable="false" />
+          <Property Name="IdClase" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdSegmentoOnu" Type="int" Nullable="false" />
+          <Property Name="IdFamiliaOnu" Type="int" Nullable="false" />
+          <Property Name="IdClaseOnu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FamiliaONU">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSegmentoONU" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Grupo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSegmento" Type="int" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ItemAtributo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDetalleRequerimiento" Type="int" Nullable="false" />
+          <Property Name="IdAtributo" Type="int" />
+          <Property Name="Valor" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Requerimiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CentroLogistico" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Solicitante" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreadoPor" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="AprobadoPor" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaAprobacion" Type="datetime" />
+          <Property Name="AceptadoPor" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaAceptacion" Type="datetime" />
+          <Property Name="TerminadoPor" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaTermino" Type="datetime" />
+          <Property Name="RechazadoPor" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaRechazo" Type="datetime" />
+          <Property Name="RazonRechazo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RolesAceptados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Segmento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SegmentoONU">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'STRACON_SGCO.dbo.TabClaMaterial' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="TabClaMaterial">
+          <Key>
+            <PropertyRef Name="vCodUsuCreacion" />
+            <PropertyRef Name="sdFecCreacion" />
+            <PropertyRef Name="vNomTerCreacion" />
+          </Key>
+          <Property Name="cCodSegmento" Type="char" MaxLength="12" />
+          <Property Name="vNomSegmento" Type="varchar" MaxLength="200" />
+          <Property Name="cCodGrupo" Type="char" MaxLength="12" />
+          <Property Name="vNomGrupo" Type="varchar" MaxLength="200" />
+          <Property Name="cCodClase" Type="char" MaxLength="12" />
+          <Property Name="vNomClase" Type="varchar" MaxLength="200" />
+          <Property Name="cCodAtributo" Type="char" MaxLength="18" />
+          <Property Name="vNomAtributo" Type="varchar" MaxLength="200" />
+          <Property Name="tiOrden" Type="tinyint" />
+          <Property Name="bObligatorio" Type="bit" />
+          <Property Name="vCodUsuCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sdFecCreacion" Type="smalldatetime" Nullable="false" />
+          <Property Name="vNomTerCreacion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="vCodUsuModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="sdFecActModificacion" Type="smalldatetime" />
+          <Property Name="vNomTerModificacion" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TipoMaterial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'STRACON_SGCO.GRL.PARAMETRO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="PARAMETRO">
+          <Key>
+            <PropertyRef Name="CODIGO_PARAMETRO" />
+            <PropertyRef Name="CODIGO_EMPRESA" />
+            <PropertyRef Name="CODIGO_IDENTIFICADOR" />
+            <PropertyRef Name="NOMBRE" />
+            <PropertyRef Name="DESCRIPCION" />
+            <PropertyRef Name="INDICADOR_EMPRESA" />
+            <PropertyRef Name="INDICADOR_PERMITE_AGREGAR" />
+            <PropertyRef Name="INDICADOR_PERMITE_MODIFICAR" />
+            <PropertyRef Name="INDICADOR_PERMITE_ELIMINAR" />
+            <PropertyRef Name="TIPO_PARAMETRO" />
+            <PropertyRef Name="ESTADO_REGISTRO" />
+            <PropertyRef Name="USUARIO_CREACION" />
+            <PropertyRef Name="FECHA_CREACION" />
+            <PropertyRef Name="TERMINAL_CREACION" />
+          </Key>
+          <Property Name="CODIGO_PARAMETRO" Type="int" Nullable="false" />
+          <Property Name="CODIGO_EMPRESA" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CODIGO_SISTEMA" Type="uniqueidentifier" />
+          <Property Name="CODIGO_IDENTIFICADOR" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRE" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="INDICADOR_EMPRESA" Type="bit" Nullable="false" />
+          <Property Name="INDICADOR_PERMITE_AGREGAR" Type="bit" Nullable="false" />
+          <Property Name="INDICADOR_PERMITE_MODIFICAR" Type="bit" Nullable="false" />
+          <Property Name="INDICADOR_PERMITE_ELIMINAR" Type="bit" Nullable="false" />
+          <Property Name="TIPO_PARAMETRO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ESTADO_REGISTRO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="USUARIO_CREACION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="datetime" Nullable="false" />
+          <Property Name="TERMINAL_CREACION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="USUARIO_MODIFICACION" Type="nvarchar" MaxLength="50" />
+          <Property Name="FECHA_MODIFICACION" Type="datetime" />
+          <Property Name="TERMINAL_MODIFICACION" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'STRACON_SGCO.GRL.PARAMETRO_SECCION' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="PARAMETRO_SECCION">
+          <Key>
+            <PropertyRef Name="CODIGO_PARAMETRO" />
+            <PropertyRef Name="CODIGO_SECCION" />
+            <PropertyRef Name="NOMBRE" />
+            <PropertyRef Name="CODIGO_TIPO_DATO" />
+            <PropertyRef Name="INDICADOR_PERMITE_MODIFICAR" />
+            <PropertyRef Name="INDICADOR_OBLIGATORIO" />
+            <PropertyRef Name="INDICADOR_SISTEMA" />
+            <PropertyRef Name="ESTADO_REGISTRO" />
+            <PropertyRef Name="USUARIO_CREACION" />
+            <PropertyRef Name="FECHA_CREACION" />
+            <PropertyRef Name="TERMINAL_CREACION" />
+          </Key>
+          <Property Name="CODIGO_PARAMETRO" Type="int" Nullable="false" />
+          <Property Name="CODIGO_SECCION" Type="int" Nullable="false" />
+          <Property Name="NOMBRE" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CODIGO_TIPO_DATO" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="INDICADOR_PERMITE_MODIFICAR" Type="bit" Nullable="false" />
+          <Property Name="INDICADOR_OBLIGATORIO" Type="bit" Nullable="false" />
+          <Property Name="INDICADOR_SISTEMA" Type="bit" Nullable="false" />
+          <Property Name="CODIGO_PARAMETRO_RELACIONADO" Type="int" />
+          <Property Name="CODIGO_SECCION_RELACIONADO" Type="int" />
+          <Property Name="CODIGO_SECCION_RELACIONADO_MOSTRAR" Type="int" />
+          <Property Name="ESTADO_REGISTRO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="USUARIO_CREACION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="datetime" Nullable="false" />
+          <Property Name="TERMINAL_CREACION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="USUARIO_MODIFICACION" Type="nvarchar" MaxLength="50" />
+          <Property Name="FECHA_MODIFICACION" Type="datetime" />
+          <Property Name="TERMINAL_MODIFICACION" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'STRACON_SGCO.GRL.PARAMETRO_VALOR' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="PARAMETRO_VALOR">
+          <Key>
+            <PropertyRef Name="CODIGO_PARAMETRO" />
+            <PropertyRef Name="CODIGO_SECCION" />
+            <PropertyRef Name="CODIGO_VALOR" />
+            <PropertyRef Name="ESTADO_REGISTRO" />
+            <PropertyRef Name="USUARIO_CREACION" />
+            <PropertyRef Name="FECHA_CREACION" />
+            <PropertyRef Name="TERMINAL_CREACION" />
+          </Key>
+          <Property Name="CODIGO_PARAMETRO" Type="int" Nullable="false" />
+          <Property Name="CODIGO_SECCION" Type="int" Nullable="false" />
+          <Property Name="CODIGO_VALOR" Type="int" Nullable="false" />
+          <Property Name="VALOR" Type="nvarchar(max)" />
+          <Property Name="ESTADO_REGISTRO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="USUARIO_CREACION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="datetime" Nullable="false" />
+          <Property Name="TERMINAL_CREACION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="USUARIO_MODIFICACION" Type="nvarchar" MaxLength="50" />
+          <Property Name="FECHA_MODIFICACION" Type="datetime" />
+          <Property Name="TERMINAL_MODIFICACION" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Adjunto_Requerimiento">
+          <End Role="Requerimiento" Type="Self.Requerimiento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Adjunto" Type="Self.Adjunto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Requerimiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adjunto">
+              <PropertyRef Name="IdRequerimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Atributo_Clase">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="0..1" />
+          <End Role="Atributo" Type="Self.Atributo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Atributo">
+              <PropertyRef Name="IdClase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoriaValorizacion_TipoMaterial">
+          <End Role="TipoMaterial" Type="Self.TipoMaterial" Multiplicity="0..1" />
+          <End Role="CategoriaValorizacion" Type="Self.CategoriaValorizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMaterial">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoriaValorizacion">
+              <PropertyRef Name="IdTipoMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clase_Grupo">
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="0..1" />
+          <End Role="Clase" Type="Self.Clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clase">
+              <PropertyRef Name="IdGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClaseONU_FamiliaONU">
+          <End Role="FamiliaONU" Type="Self.FamiliaONU" Multiplicity="1" />
+          <End Role="ClaseONU" Type="Self.ClaseONU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamiliaONU">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClaseONU">
+              <PropertyRef Name="IdFamiliaONU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleRequerimiento_ClaseONU">
+          <End Role="ClaseONU" Type="Self.ClaseONU" Multiplicity="1" />
+          <End Role="DetalleRequerimiento" Type="Self.DetalleRequerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClaseONU">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleRequerimiento">
+              <PropertyRef Name="IdClaseOnu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleRequerimiento_FamiliaONU">
+          <End Role="FamiliaONU" Type="Self.FamiliaONU" Multiplicity="1" />
+          <End Role="DetalleRequerimiento" Type="Self.DetalleRequerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamiliaONU">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleRequerimiento">
+              <PropertyRef Name="IdFamiliaOnu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleRequerimiento_Requerimiento">
+          <End Role="Requerimiento" Type="Self.Requerimiento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetalleRequerimiento" Type="Self.DetalleRequerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Requerimiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleRequerimiento">
+              <PropertyRef Name="IdRequerimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleRequerimiento_SegmentoONU">
+          <End Role="SegmentoONU" Type="Self.SegmentoONU" Multiplicity="1" />
+          <End Role="DetalleRequerimiento" Type="Self.DetalleRequerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SegmentoONU">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleRequerimiento">
+              <PropertyRef Name="IdSegmentoOnu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamiliaONU_SegementoONU">
+          <End Role="SegmentoONU" Type="Self.SegmentoONU" Multiplicity="1" />
+          <End Role="FamiliaONU" Type="Self.FamiliaONU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SegmentoONU">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FamiliaONU">
+              <PropertyRef Name="IdSegmentoONU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupo_Segmento">
+          <End Role="Segmento" Type="Self.Segmento" Multiplicity="0..1" />
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segmento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grupo">
+              <PropertyRef Name="IdSegmento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemAtributo_DetalleRequerimiento">
+          <End Role="DetalleRequerimiento" Type="Self.DetalleRequerimiento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ItemAtributo" Type="Self.ItemAtributo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DetalleRequerimiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemAtributo">
+              <PropertyRef Name="IdDetalleRequerimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="STRACON_SGCOModelStoreContainer">
+          <EntitySet Name="Adjunto" EntityType="Self.Adjunto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Atributo" EntityType="Self.Atributo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoriaValorizacion" EntityType="Self.CategoriaValorizacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clase" EntityType="Self.Clase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClaseONU" EntityType="Self.ClaseONU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleRequerimiento" EntityType="Self.DetalleRequerimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamiliaONU" EntityType="Self.FamiliaONU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grupo" EntityType="Self.Grupo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemAtributo" EntityType="Self.ItemAtributo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Requerimiento" EntityType="Self.Requerimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolesAceptados" EntityType="Self.RolesAceptados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Segmento" EntityType="Self.Segmento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SegmentoONU" EntityType="Self.SegmentoONU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoMaterial" EntityType="Self.TipoMaterial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TabClaMaterial" EntityType="Self.TabClaMaterial" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TabClaMaterial].[cCodSegmento] AS [cCodSegmento], 
+    [TabClaMaterial].[vNomSegmento] AS [vNomSegmento], 
+    [TabClaMaterial].[cCodGrupo] AS [cCodGrupo], 
+    [TabClaMaterial].[vNomGrupo] AS [vNomGrupo], 
+    [TabClaMaterial].[cCodClase] AS [cCodClase], 
+    [TabClaMaterial].[vNomClase] AS [vNomClase], 
+    [TabClaMaterial].[cCodAtributo] AS [cCodAtributo], 
+    [TabClaMaterial].[vNomAtributo] AS [vNomAtributo], 
+    [TabClaMaterial].[tiOrden] AS [tiOrden], 
+    [TabClaMaterial].[bObligatorio] AS [bObligatorio], 
+    [TabClaMaterial].[vCodUsuCreacion] AS [vCodUsuCreacion], 
+    [TabClaMaterial].[sdFecCreacion] AS [sdFecCreacion], 
+    [TabClaMaterial].[vNomTerCreacion] AS [vNomTerCreacion], 
+    [TabClaMaterial].[vCodUsuModificacion] AS [vCodUsuModificacion], 
+    [TabClaMaterial].[sdFecActModificacion] AS [sdFecActModificacion], 
+    [TabClaMaterial].[vNomTerModificacion] AS [vNomTerModificacion]
+    FROM [dbo].[TabClaMaterial] AS [TabClaMaterial]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PARAMETRO" EntityType="Self.PARAMETRO" store:Type="Tables" store:Schema="GRL">
+            <DefiningQuery>SELECT 
+    [PARAMETRO].[CODIGO_PARAMETRO] AS [CODIGO_PARAMETRO], 
+    [PARAMETRO].[CODIGO_EMPRESA] AS [CODIGO_EMPRESA], 
+    [PARAMETRO].[CODIGO_SISTEMA] AS [CODIGO_SISTEMA], 
+    [PARAMETRO].[CODIGO_IDENTIFICADOR] AS [CODIGO_IDENTIFICADOR], 
+    [PARAMETRO].[NOMBRE] AS [NOMBRE], 
+    [PARAMETRO].[DESCRIPCION] AS [DESCRIPCION], 
+    [PARAMETRO].[INDICADOR_EMPRESA] AS [INDICADOR_EMPRESA], 
+    [PARAMETRO].[INDICADOR_PERMITE_AGREGAR] AS [INDICADOR_PERMITE_AGREGAR], 
+    [PARAMETRO].[INDICADOR_PERMITE_MODIFICAR] AS [INDICADOR_PERMITE_MODIFICAR], 
+    [PARAMETRO].[INDICADOR_PERMITE_ELIMINAR] AS [INDICADOR_PERMITE_ELIMINAR], 
+    [PARAMETRO].[TIPO_PARAMETRO] AS [TIPO_PARAMETRO], 
+    [PARAMETRO].[ESTADO_REGISTRO] AS [ESTADO_REGISTRO], 
+    [PARAMETRO].[USUARIO_CREACION] AS [USUARIO_CREACION], 
+    [PARAMETRO].[FECHA_CREACION] AS [FECHA_CREACION], 
+    [PARAMETRO].[TERMINAL_CREACION] AS [TERMINAL_CREACION], 
+    [PARAMETRO].[USUARIO_MODIFICACION] AS [USUARIO_MODIFICACION], 
+    [PARAMETRO].[FECHA_MODIFICACION] AS [FECHA_MODIFICACION], 
+    [PARAMETRO].[TERMINAL_MODIFICACION] AS [TERMINAL_MODIFICACION]
+    FROM [GRL].[PARAMETRO] AS [PARAMETRO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PARAMETRO_SECCION" EntityType="Self.PARAMETRO_SECCION" store:Type="Tables" store:Schema="GRL">
+            <DefiningQuery>SELECT 
+    [PARAMETRO_SECCION].[CODIGO_PARAMETRO] AS [CODIGO_PARAMETRO], 
+    [PARAMETRO_SECCION].[CODIGO_SECCION] AS [CODIGO_SECCION], 
+    [PARAMETRO_SECCION].[NOMBRE] AS [NOMBRE], 
+    [PARAMETRO_SECCION].[CODIGO_TIPO_DATO] AS [CODIGO_TIPO_DATO], 
+    [PARAMETRO_SECCION].[INDICADOR_PERMITE_MODIFICAR] AS [INDICADOR_PERMITE_MODIFICAR], 
+    [PARAMETRO_SECCION].[INDICADOR_OBLIGATORIO] AS [INDICADOR_OBLIGATORIO], 
+    [PARAMETRO_SECCION].[INDICADOR_SISTEMA] AS [INDICADOR_SISTEMA], 
+    [PARAMETRO_SECCION].[CODIGO_PARAMETRO_RELACIONADO] AS [CODIGO_PARAMETRO_RELACIONADO], 
+    [PARAMETRO_SECCION].[CODIGO_SECCION_RELACIONADO] AS [CODIGO_SECCION_RELACIONADO], 
+    [PARAMETRO_SECCION].[CODIGO_SECCION_RELACIONADO_MOSTRAR] AS [CODIGO_SECCION_RELACIONADO_MOSTRAR], 
+    [PARAMETRO_SECCION].[ESTADO_REGISTRO] AS [ESTADO_REGISTRO], 
+    [PARAMETRO_SECCION].[USUARIO_CREACION] AS [USUARIO_CREACION], 
+    [PARAMETRO_SECCION].[FECHA_CREACION] AS [FECHA_CREACION], 
+    [PARAMETRO_SECCION].[TERMINAL_CREACION] AS [TERMINAL_CREACION], 
+    [PARAMETRO_SECCION].[USUARIO_MODIFICACION] AS [USUARIO_MODIFICACION], 
+    [PARAMETRO_SECCION].[FECHA_MODIFICACION] AS [FECHA_MODIFICACION], 
+    [PARAMETRO_SECCION].[TERMINAL_MODIFICACION] AS [TERMINAL_MODIFICACION]
+    FROM [GRL].[PARAMETRO_SECCION] AS [PARAMETRO_SECCION]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PARAMETRO_VALOR" EntityType="Self.PARAMETRO_VALOR" store:Type="Tables" store:Schema="GRL">
+            <DefiningQuery>SELECT 
+    [PARAMETRO_VALOR].[CODIGO_PARAMETRO] AS [CODIGO_PARAMETRO], 
+    [PARAMETRO_VALOR].[CODIGO_SECCION] AS [CODIGO_SECCION], 
+    [PARAMETRO_VALOR].[CODIGO_VALOR] AS [CODIGO_VALOR], 
+    [PARAMETRO_VALOR].[VALOR] AS [VALOR], 
+    [PARAMETRO_VALOR].[ESTADO_REGISTRO] AS [ESTADO_REGISTRO], 
+    [PARAMETRO_VALOR].[USUARIO_CREACION] AS [USUARIO_CREACION], 
+    [PARAMETRO_VALOR].[FECHA_CREACION] AS [FECHA_CREACION], 
+    [PARAMETRO_VALOR].[TERMINAL_CREACION] AS [TERMINAL_CREACION], 
+    [PARAMETRO_VALOR].[USUARIO_MODIFICACION] AS [USUARIO_MODIFICACION], 
+    [PARAMETRO_VALOR].[FECHA_MODIFICACION] AS [FECHA_MODIFICACION], 
+    [PARAMETRO_VALOR].[TERMINAL_MODIFICACION] AS [TERMINAL_MODIFICACION]
+    FROM [GRL].[PARAMETRO_VALOR] AS [PARAMETRO_VALOR]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Adjunto_Requerimiento" Association="Self.FK_Adjunto_Requerimiento">
+            <End Role="Requerimiento" EntitySet="Requerimiento" />
+            <End Role="Adjunto" EntitySet="Adjunto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Atributo_Clase" Association="Self.FK_Atributo_Clase">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="Atributo" EntitySet="Atributo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoriaValorizacion_TipoMaterial" Association="Self.FK_CategoriaValorizacion_TipoMaterial">
+            <End Role="TipoMaterial" EntitySet="TipoMaterial" />
+            <End Role="CategoriaValorizacion" EntitySet="CategoriaValorizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clase_Grupo" Association="Self.FK_Clase_Grupo">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="Clase" EntitySet="Clase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClaseONU_FamiliaONU" Association="Self.FK_ClaseONU_FamiliaONU">
+            <End Role="FamiliaONU" EntitySet="FamiliaONU" />
+            <End Role="ClaseONU" EntitySet="ClaseONU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleRequerimiento_ClaseONU" Association="Self.FK_DetalleRequerimiento_ClaseONU">
+            <End Role="ClaseONU" EntitySet="ClaseONU" />
+            <End Role="DetalleRequerimiento" EntitySet="DetalleRequerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleRequerimiento_FamiliaONU" Association="Self.FK_DetalleRequerimiento_FamiliaONU">
+            <End Role="FamiliaONU" EntitySet="FamiliaONU" />
+            <End Role="DetalleRequerimiento" EntitySet="DetalleRequerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleRequerimiento_Requerimiento" Association="Self.FK_DetalleRequerimiento_Requerimiento">
+            <End Role="Requerimiento" EntitySet="Requerimiento" />
+            <End Role="DetalleRequerimiento" EntitySet="DetalleRequerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleRequerimiento_SegmentoONU" Association="Self.FK_DetalleRequerimiento_SegmentoONU">
+            <End Role="SegmentoONU" EntitySet="SegmentoONU" />
+            <End Role="DetalleRequerimiento" EntitySet="DetalleRequerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamiliaONU_SegementoONU" Association="Self.FK_FamiliaONU_SegementoONU">
+            <End Role="SegmentoONU" EntitySet="SegmentoONU" />
+            <End Role="FamiliaONU" EntitySet="FamiliaONU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupo_Segmento" Association="Self.FK_Grupo_Segmento">
+            <End Role="Segmento" EntitySet="Segmento" />
+            <End Role="Grupo" EntitySet="Grupo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemAtributo_DetalleRequerimiento" Association="Self.FK_ItemAtributo_DetalleRequerimiento">
+            <End Role="DetalleRequerimiento" EntitySet="DetalleRequerimiento" />
+            <End Role="ItemAtributo" EntitySet="ItemAtributo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="STRACON_SGCOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Atributo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClase" Type="Int32" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Requerido" Type="Boolean" />
+          <NavigationProperty Name="Clase" Relationship="Self.FK_Atributo_Clase" FromRole="Atributo" ToRole="Clase" />
+        </EntityType>
+        <EntityType Name="CategoriaValorizacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTipoMaterial" Type="Int32" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TipoMaterial" Relationship="Self.FK_CategoriaValorizacion_TipoMaterial" FromRole="CategoriaValorizacion" ToRole="TipoMaterial" />
+        </EntityType>
+        <EntityType Name="Clase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdGrupo" Type="Int32" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Atributo" Relationship="Self.FK_Atributo_Clase" FromRole="Clase" ToRole="Atributo" />
+          <NavigationProperty Name="Grupo" Relationship="Self.FK_Clase_Grupo" FromRole="Clase" ToRole="Grupo" />
+        </EntityType>
+        <EntityType Name="Grupo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSegmento" Type="Int32" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clase" Relationship="Self.FK_Clase_Grupo" FromRole="Grupo" ToRole="Clase" />
+          <NavigationProperty Name="Segmento" Relationship="Self.FK_Grupo_Segmento" FromRole="Grupo" ToRole="Segmento" />
+        </EntityType>
+        <EntityType Name="Requerimiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CentroLogistico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Solicitante" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="AprobadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaAprobacion" Type="DateTime" Precision="3" />
+          <Property Name="AceptadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaAceptacion" Type="DateTime" Precision="3" />
+          <Property Name="TerminadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaTermino" Type="DateTime" Precision="3" />
+          <Property Name="RechazadoPor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaRechazo" Type="DateTime" Precision="3" />
+          <Property Name="RazonRechazo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Adjunto" Relationship="STRACON_SGCOModel.FK_Adjunto_Requerimiento" FromRole="Requerimiento" ToRole="Adjunto" />
+          <NavigationProperty Name="DetalleRequerimiento" Relationship="STRACON_SGCOModel.FK_DetalleRequerimiento_Requerimiento" FromRole="Requerimiento" ToRole="DetalleRequerimiento" />
+        </EntityType>
+        <EntityType Name="Segmento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Grupo" Relationship="Self.FK_Grupo_Segmento" FromRole="Segmento" ToRole="Grupo" />
+        </EntityType>
+        <EntityType Name="TipoMaterial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CategoriaValorizacion" Relationship="Self.FK_CategoriaValorizacion_TipoMaterial" FromRole="TipoMaterial" ToRole="CategoriaValorizacion" />
+        </EntityType>
+        <EntityType Name="TabClaMaterial">
+          <Key>
+            <PropertyRef Name="vCodUsuCreacion" />
+            <PropertyRef Name="sdFecCreacion" />
+            <PropertyRef Name="vNomTerCreacion" />
+          </Key>
+          <Property Name="cCodSegmento" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="vNomSegmento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="cCodGrupo" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="vNomGrupo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="cCodClase" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="vNomClase" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="cCodAtributo" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="vNomAtributo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="tiOrden" Type="Byte" />
+          <Property Name="bObligatorio" Type="Boolean" />
+          <Property Name="vCodUsuCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sdFecCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="vNomTerCreacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vCodUsuModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sdFecActModificacion" Type="DateTime" Precision="0" />
+          <Property Name="vNomTerModificacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PARAMETRO">
+          <Key>
+            <PropertyRef Name="CODIGO_PARAMETRO" />
+            <PropertyRef Name="CODIGO_EMPRESA" />
+            <PropertyRef Name="CODIGO_IDENTIFICADOR" />
+            <PropertyRef Name="NOMBRE" />
+            <PropertyRef Name="DESCRIPCION" />
+            <PropertyRef Name="INDICADOR_EMPRESA" />
+            <PropertyRef Name="INDICADOR_PERMITE_AGREGAR" />
+            <PropertyRef Name="INDICADOR_PERMITE_MODIFICAR" />
+            <PropertyRef Name="INDICADOR_PERMITE_ELIMINAR" />
+            <PropertyRef Name="TIPO_PARAMETRO" />
+            <PropertyRef Name="ESTADO_REGISTRO" />
+            <PropertyRef Name="USUARIO_CREACION" />
+            <PropertyRef Name="FECHA_CREACION" />
+            <PropertyRef Name="TERMINAL_CREACION" />
+          </Key>
+          <Property Name="CODIGO_PARAMETRO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_EMPRESA" Type="Guid" Nullable="false" />
+          <Property Name="CODIGO_SISTEMA" Type="Guid" />
+          <Property Name="CODIGO_IDENTIFICADOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="INDICADOR_EMPRESA" Type="Boolean" Nullable="false" />
+          <Property Name="INDICADOR_PERMITE_AGREGAR" Type="Boolean" Nullable="false" />
+          <Property Name="INDICADOR_PERMITE_MODIFICAR" Type="Boolean" Nullable="false" />
+          <Property Name="INDICADOR_PERMITE_ELIMINAR" Type="Boolean" Nullable="false" />
+          <Property Name="TIPO_PARAMETRO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO_REGISTRO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="USUARIO_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TERMINAL_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USUARIO_MODIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_MODIFICACION" Type="DateTime" Precision="3" />
+          <Property Name="TERMINAL_MODIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PARAMETRO_SECCION">
+          <Key>
+            <PropertyRef Name="CODIGO_PARAMETRO" />
+            <PropertyRef Name="CODIGO_SECCION" />
+            <PropertyRef Name="NOMBRE" />
+            <PropertyRef Name="CODIGO_TIPO_DATO" />
+            <PropertyRef Name="INDICADOR_PERMITE_MODIFICAR" />
+            <PropertyRef Name="INDICADOR_OBLIGATORIO" />
+            <PropertyRef Name="INDICADOR_SISTEMA" />
+            <PropertyRef Name="ESTADO_REGISTRO" />
+            <PropertyRef Name="USUARIO_CREACION" />
+            <PropertyRef Name="FECHA_CREACION" />
+            <PropertyRef Name="TERMINAL_CREACION" />
+          </Key>
+          <Property Name="CODIGO_PARAMETRO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_SECCION" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CODIGO_TIPO_DATO" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="INDICADOR_PERMITE_MODIFICAR" Type="Boolean" Nullable="false" />
+          <Property Name="INDICADOR_OBLIGATORIO" Type="Boolean" Nullable="false" />
+          <Property Name="INDICADOR_SISTEMA" Type="Boolean" Nullable="false" />
+          <Property Name="CODIGO_PARAMETRO_RELACIONADO" Type="Int32" />
+          <Property Name="CODIGO_SECCION_RELACIONADO" Type="Int32" />
+          <Property Name="CODIGO_SECCION_RELACIONADO_MOSTRAR" Type="Int32" />
+          <Property Name="ESTADO_REGISTRO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="USUARIO_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TERMINAL_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USUARIO_MODIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_MODIFICACION" Type="DateTime" Precision="3" />
+          <Property Name="TERMINAL_MODIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PARAMETRO_VALOR">
+          <Key>
+            <PropertyRef Name="CODIGO_PARAMETRO" />
+            <PropertyRef Name="CODIGO_SECCION" />
+            <PropertyRef Name="CODIGO_VALOR" />
+            <PropertyRef Name="ESTADO_REGISTRO" />
+            <PropertyRef Name="USUARIO_CREACION" />
+            <PropertyRef Name="FECHA_CREACION" />
+            <PropertyRef Name="TERMINAL_CREACION" />
+          </Key>
+          <Property Name="CODIGO_PARAMETRO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_SECCION" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_VALOR" Type="Int32" Nullable="false" />
+          <Property Name="VALOR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ESTADO_REGISTRO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="USUARIO_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TERMINAL_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USUARIO_MODIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_MODIFICACION" Type="DateTime" Precision="3" />
+          <Property Name="TERMINAL_MODIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Atributo_Clase">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="0..1" />
+          <End Role="Atributo" Type="Self.Atributo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Atributo">
+              <PropertyRef Name="IdClase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoriaValorizacion_TipoMaterial">
+          <End Role="TipoMaterial" Type="Self.TipoMaterial" Multiplicity="0..1" />
+          <End Role="CategoriaValorizacion" Type="Self.CategoriaValorizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMaterial">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoriaValorizacion">
+              <PropertyRef Name="IdTipoMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clase_Grupo">
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="0..1" />
+          <End Role="Clase" Type="Self.Clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clase">
+              <PropertyRef Name="IdGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupo_Segmento">
+          <End Role="Segmento" Type="Self.Segmento" Multiplicity="0..1" />
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segmento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grupo">
+              <PropertyRef Name="IdSegmento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="STRACON_SGCOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Atributo" EntityType="Self.Atributo" />
+          <EntitySet Name="CategoriaValorizacion" EntityType="Self.CategoriaValorizacion" />
+          <EntitySet Name="Clase" EntityType="Self.Clase" />
+          <EntitySet Name="Grupo" EntityType="Self.Grupo" />
+          <EntitySet Name="Requerimiento" EntityType="Self.Requerimiento" />
+          <EntitySet Name="Segmento" EntityType="Self.Segmento" />
+          <EntitySet Name="TipoMaterial" EntityType="Self.TipoMaterial" />
+          <EntitySet Name="TabClaMaterial" EntityType="Self.TabClaMaterial" />
+          <EntitySet Name="PARAMETRO" EntityType="Self.PARAMETRO" />
+          <EntitySet Name="PARAMETRO_SECCION" EntityType="Self.PARAMETRO_SECCION" />
+          <EntitySet Name="PARAMETRO_VALOR" EntityType="Self.PARAMETRO_VALOR" />
+          <AssociationSet Name="FK_Atributo_Clase" Association="Self.FK_Atributo_Clase">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="Atributo" EntitySet="Atributo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoriaValorizacion_TipoMaterial" Association="Self.FK_CategoriaValorizacion_TipoMaterial">
+            <End Role="TipoMaterial" EntitySet="TipoMaterial" />
+            <End Role="CategoriaValorizacion" EntitySet="CategoriaValorizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clase_Grupo" Association="Self.FK_Clase_Grupo">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="Clase" EntitySet="Clase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupo_Segmento" Association="Self.FK_Grupo_Segmento">
+            <End Role="Segmento" EntitySet="Segmento" />
+            <End Role="Grupo" EntitySet="Grupo" />
+          </AssociationSet>
+          <EntitySet Name="ItemAtributo" EntityType="STRACON_SGCOModel.ItemAtributo" />
+          <EntitySet Name="Adjunto" EntityType="STRACON_SGCOModel.Adjunto" />
+          <AssociationSet Name="FK_Adjunto_Requerimiento" Association="STRACON_SGCOModel.FK_Adjunto_Requerimiento">
+            <End Role="Requerimiento" EntitySet="Requerimiento" />
+            <End Role="Adjunto" EntitySet="Adjunto" />
+          </AssociationSet>
+          <EntitySet Name="RolesAceptados" EntityType="STRACON_SGCOModel.RolesAceptados" />
+          <EntitySet Name="ClaseONU" EntityType="STRACON_SGCOModel.ClaseONU" />
+          <EntitySet Name="FamiliaONU" EntityType="STRACON_SGCOModel.FamiliaONU" />
+          <EntitySet Name="SegmentoONU" EntityType="STRACON_SGCOModel.SegmentoONU" />
+          <AssociationSet Name="FK_ClaseONU_FamiliaONU" Association="STRACON_SGCOModel.FK_ClaseONU_FamiliaONU">
+            <End Role="FamiliaONU" EntitySet="FamiliaONU" />
+            <End Role="ClaseONU" EntitySet="ClaseONU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamiliaONU_SegementoONU" Association="STRACON_SGCOModel.FK_FamiliaONU_SegementoONU">
+            <End Role="SegmentoONU" EntitySet="SegmentoONU" />
+            <End Role="FamiliaONU" EntitySet="FamiliaONU" />
+          </AssociationSet>
+          <EntitySet Name="DetalleRequerimiento" EntityType="STRACON_SGCOModel.DetalleRequerimiento" />
+          <AssociationSet Name="FK_DetalleRequerimiento_ClaseONU" Association="STRACON_SGCOModel.FK_DetalleRequerimiento_ClaseONU">
+            <End Role="ClaseONU" EntitySet="ClaseONU" />
+            <End Role="DetalleRequerimiento" EntitySet="DetalleRequerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleRequerimiento_FamiliaONU" Association="STRACON_SGCOModel.FK_DetalleRequerimiento_FamiliaONU">
+            <End Role="FamiliaONU" EntitySet="FamiliaONU" />
+            <End Role="DetalleRequerimiento" EntitySet="DetalleRequerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleRequerimiento_Requerimiento" Association="STRACON_SGCOModel.FK_DetalleRequerimiento_Requerimiento">
+            <End Role="Requerimiento" EntitySet="Requerimiento" />
+            <End Role="DetalleRequerimiento" EntitySet="DetalleRequerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleRequerimiento_SegmentoONU" Association="STRACON_SGCOModel.FK_DetalleRequerimiento_SegmentoONU">
+            <End Role="SegmentoONU" EntitySet="SegmentoONU" />
+            <End Role="DetalleRequerimiento" EntitySet="DetalleRequerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemAtributo_DetalleRequerimiento" Association="STRACON_SGCOModel.FK_ItemAtributo_DetalleRequerimiento">
+            <End Role="DetalleRequerimiento" EntitySet="DetalleRequerimiento" />
+            <End Role="ItemAtributo" EntitySet="ItemAtributo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ItemAtributo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDetalleRequerimiento" Type="Int32" Nullable="false" />
+          <Property Name="IdAtributo" Type="Int32" />
+          <Property Name="Valor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DetalleRequerimiento" Relationship="STRACON_SGCOModel.FK_ItemAtributo_DetalleRequerimiento" FromRole="ItemAtributo" ToRole="DetalleRequerimiento" />
+        </EntityType>
+        <EntityType Name="Adjunto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRequerimiento" Type="Int32" Nullable="false" />
+          <Property Name="Seccion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NombreArchivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TamanioArchivo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Requerimiento" Relationship="STRACON_SGCOModel.FK_Adjunto_Requerimiento" FromRole="Adjunto" ToRole="Requerimiento" />
+        </EntityType>
+        <Association Name="FK_Adjunto_Requerimiento">
+          <End Type="STRACON_SGCOModel.Requerimiento" Role="Requerimiento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="STRACON_SGCOModel.Adjunto" Role="Adjunto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Requerimiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adjunto">
+              <PropertyRef Name="IdRequerimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RolesAceptados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ClaseONU">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFamiliaONU" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FamiliaONU" Relationship="STRACON_SGCOModel.FK_ClaseONU_FamiliaONU" FromRole="ClaseONU" ToRole="FamiliaONU" />
+          <NavigationProperty Name="DetalleRequerimiento" Relationship="STRACON_SGCOModel.FK_DetalleRequerimiento_ClaseONU" FromRole="ClaseONU" ToRole="DetalleRequerimiento" />
+        </EntityType>
+        <EntityType Name="FamiliaONU">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSegmentoONU" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClaseONU" Relationship="STRACON_SGCOModel.FK_ClaseONU_FamiliaONU" FromRole="FamiliaONU" ToRole="ClaseONU" />
+          <NavigationProperty Name="SegmentoONU" Relationship="STRACON_SGCOModel.FK_FamiliaONU_SegementoONU" FromRole="FamiliaONU" ToRole="SegmentoONU" />
+          <NavigationProperty Name="DetalleRequerimiento" Relationship="STRACON_SGCOModel.FK_DetalleRequerimiento_FamiliaONU" FromRole="FamiliaONU" ToRole="DetalleRequerimiento" />
+        </EntityType>
+        <EntityType Name="SegmentoONU">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FamiliaONU" Relationship="STRACON_SGCOModel.FK_FamiliaONU_SegementoONU" FromRole="SegmentoONU" ToRole="FamiliaONU" />
+          <NavigationProperty Name="DetalleRequerimiento" Relationship="STRACON_SGCOModel.FK_DetalleRequerimiento_SegmentoONU" FromRole="SegmentoONU" ToRole="DetalleRequerimiento" />
+        </EntityType>
+        <Association Name="FK_ClaseONU_FamiliaONU">
+          <End Type="STRACON_SGCOModel.FamiliaONU" Role="FamiliaONU" Multiplicity="1" />
+          <End Type="STRACON_SGCOModel.ClaseONU" Role="ClaseONU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamiliaONU">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClaseONU">
+              <PropertyRef Name="IdFamiliaONU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamiliaONU_SegementoONU">
+          <End Type="STRACON_SGCOModel.SegmentoONU" Role="SegmentoONU" Multiplicity="1" />
+          <End Type="STRACON_SGCOModel.FamiliaONU" Role="FamiliaONU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SegmentoONU">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FamiliaONU">
+              <PropertyRef Name="IdSegmentoONU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DetalleRequerimiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRequerimiento" Type="Int32" Nullable="false" />
+          <Property Name="IdTipoMaterial" Type="Int32" Nullable="false" />
+          <Property Name="IdCategoriaValorizacion" Type="Int32" Nullable="false" />
+          <Property Name="GrupoArticulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnidadMedida" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdSegmento" Type="Int32" Nullable="false" />
+          <Property Name="IdGrupo" Type="Int32" Nullable="false" />
+          <Property Name="IdClase" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdSegmentoOnu" Type="Int32" Nullable="false" />
+          <Property Name="IdFamiliaOnu" Type="Int32" Nullable="false" />
+          <Property Name="IdClaseOnu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClaseONU" Relationship="STRACON_SGCOModel.FK_DetalleRequerimiento_ClaseONU" FromRole="DetalleRequerimiento" ToRole="ClaseONU" />
+          <NavigationProperty Name="FamiliaONU" Relationship="STRACON_SGCOModel.FK_DetalleRequerimiento_FamiliaONU" FromRole="DetalleRequerimiento" ToRole="FamiliaONU" />
+          <NavigationProperty Name="Requerimiento" Relationship="STRACON_SGCOModel.FK_DetalleRequerimiento_Requerimiento" FromRole="DetalleRequerimiento" ToRole="Requerimiento" />
+          <NavigationProperty Name="SegmentoONU" Relationship="STRACON_SGCOModel.FK_DetalleRequerimiento_SegmentoONU" FromRole="DetalleRequerimiento" ToRole="SegmentoONU" />
+          <NavigationProperty Name="ItemAtributo" Relationship="STRACON_SGCOModel.FK_ItemAtributo_DetalleRequerimiento" FromRole="DetalleRequerimiento" ToRole="ItemAtributo" />
+        </EntityType>
+        <Association Name="FK_DetalleRequerimiento_ClaseONU">
+          <End Type="STRACON_SGCOModel.ClaseONU" Role="ClaseONU" Multiplicity="1" />
+          <End Type="STRACON_SGCOModel.DetalleRequerimiento" Role="DetalleRequerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClaseONU">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleRequerimiento">
+              <PropertyRef Name="IdClaseOnu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleRequerimiento_FamiliaONU">
+          <End Type="STRACON_SGCOModel.FamiliaONU" Role="FamiliaONU" Multiplicity="1" />
+          <End Type="STRACON_SGCOModel.DetalleRequerimiento" Role="DetalleRequerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamiliaONU">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleRequerimiento">
+              <PropertyRef Name="IdFamiliaOnu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleRequerimiento_Requerimiento">
+          <End Type="STRACON_SGCOModel.Requerimiento" Role="Requerimiento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="STRACON_SGCOModel.DetalleRequerimiento" Role="DetalleRequerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Requerimiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleRequerimiento">
+              <PropertyRef Name="IdRequerimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleRequerimiento_SegmentoONU">
+          <End Type="STRACON_SGCOModel.SegmentoONU" Role="SegmentoONU" Multiplicity="1" />
+          <End Type="STRACON_SGCOModel.DetalleRequerimiento" Role="DetalleRequerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SegmentoONU">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleRequerimiento">
+              <PropertyRef Name="IdSegmentoOnu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemAtributo_DetalleRequerimiento">
+          <End Type="STRACON_SGCOModel.DetalleRequerimiento" Role="DetalleRequerimiento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="STRACON_SGCOModel.ItemAtributo" Role="ItemAtributo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DetalleRequerimiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemAtributo">
+              <PropertyRef Name="IdDetalleRequerimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="STRACON_SGCOModelStoreContainer" CdmEntityContainer="STRACON_SGCOEntities">
+          <EntitySetMapping Name="Atributo">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.Atributo">
+              <MappingFragment StoreEntitySet="Atributo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdClase" ColumnName="IdClase" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Requerido" ColumnName="Requerido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoriaValorizacion">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.CategoriaValorizacion">
+              <MappingFragment StoreEntitySet="CategoriaValorizacion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdTipoMaterial" ColumnName="IdTipoMaterial" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clase">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.Clase">
+              <MappingFragment StoreEntitySet="Clase">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdGrupo" ColumnName="IdGrupo" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grupo">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.Grupo">
+              <MappingFragment StoreEntitySet="Grupo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdSegmento" ColumnName="IdSegmento" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requerimiento">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.Requerimiento">
+              <MappingFragment StoreEntitySet="Requerimiento">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CentroLogistico" ColumnName="CentroLogistico" />
+                <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="AprobadoPor" ColumnName="AprobadoPor" />
+                <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
+                <ScalarProperty Name="AceptadoPor" ColumnName="AceptadoPor" />
+                <ScalarProperty Name="FechaAceptacion" ColumnName="FechaAceptacion" />
+                <ScalarProperty Name="TerminadoPor" ColumnName="TerminadoPor" />
+                <ScalarProperty Name="FechaTermino" ColumnName="FechaTermino" />
+                <ScalarProperty Name="RechazadoPor" ColumnName="RechazadoPor" />
+                <ScalarProperty Name="FechaRechazo" ColumnName="FechaRechazo" />
+                <ScalarProperty Name="RazonRechazo" ColumnName="RazonRechazo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Segmento">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.Segmento">
+              <MappingFragment StoreEntitySet="Segmento">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMaterial">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.TipoMaterial">
+              <MappingFragment StoreEntitySet="TipoMaterial">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TabClaMaterial">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.TabClaMaterial">
+              <MappingFragment StoreEntitySet="TabClaMaterial">
+                <ScalarProperty Name="cCodSegmento" ColumnName="cCodSegmento" />
+                <ScalarProperty Name="vNomSegmento" ColumnName="vNomSegmento" />
+                <ScalarProperty Name="cCodGrupo" ColumnName="cCodGrupo" />
+                <ScalarProperty Name="vNomGrupo" ColumnName="vNomGrupo" />
+                <ScalarProperty Name="cCodClase" ColumnName="cCodClase" />
+                <ScalarProperty Name="vNomClase" ColumnName="vNomClase" />
+                <ScalarProperty Name="cCodAtributo" ColumnName="cCodAtributo" />
+                <ScalarProperty Name="vNomAtributo" ColumnName="vNomAtributo" />
+                <ScalarProperty Name="tiOrden" ColumnName="tiOrden" />
+                <ScalarProperty Name="bObligatorio" ColumnName="bObligatorio" />
+                <ScalarProperty Name="vCodUsuCreacion" ColumnName="vCodUsuCreacion" />
+                <ScalarProperty Name="sdFecCreacion" ColumnName="sdFecCreacion" />
+                <ScalarProperty Name="vNomTerCreacion" ColumnName="vNomTerCreacion" />
+                <ScalarProperty Name="vCodUsuModificacion" ColumnName="vCodUsuModificacion" />
+                <ScalarProperty Name="sdFecActModificacion" ColumnName="sdFecActModificacion" />
+                <ScalarProperty Name="vNomTerModificacion" ColumnName="vNomTerModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PARAMETRO">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.PARAMETRO">
+              <MappingFragment StoreEntitySet="PARAMETRO">
+                <ScalarProperty Name="CODIGO_PARAMETRO" ColumnName="CODIGO_PARAMETRO" />
+                <ScalarProperty Name="CODIGO_EMPRESA" ColumnName="CODIGO_EMPRESA" />
+                <ScalarProperty Name="CODIGO_SISTEMA" ColumnName="CODIGO_SISTEMA" />
+                <ScalarProperty Name="CODIGO_IDENTIFICADOR" ColumnName="CODIGO_IDENTIFICADOR" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="INDICADOR_EMPRESA" ColumnName="INDICADOR_EMPRESA" />
+                <ScalarProperty Name="INDICADOR_PERMITE_AGREGAR" ColumnName="INDICADOR_PERMITE_AGREGAR" />
+                <ScalarProperty Name="INDICADOR_PERMITE_MODIFICAR" ColumnName="INDICADOR_PERMITE_MODIFICAR" />
+                <ScalarProperty Name="INDICADOR_PERMITE_ELIMINAR" ColumnName="INDICADOR_PERMITE_ELIMINAR" />
+                <ScalarProperty Name="TIPO_PARAMETRO" ColumnName="TIPO_PARAMETRO" />
+                <ScalarProperty Name="ESTADO_REGISTRO" ColumnName="ESTADO_REGISTRO" />
+                <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="TERMINAL_CREACION" ColumnName="TERMINAL_CREACION" />
+                <ScalarProperty Name="USUARIO_MODIFICACION" ColumnName="USUARIO_MODIFICACION" />
+                <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+                <ScalarProperty Name="TERMINAL_MODIFICACION" ColumnName="TERMINAL_MODIFICACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PARAMETRO_SECCION">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.PARAMETRO_SECCION">
+              <MappingFragment StoreEntitySet="PARAMETRO_SECCION">
+                <ScalarProperty Name="CODIGO_PARAMETRO" ColumnName="CODIGO_PARAMETRO" />
+                <ScalarProperty Name="CODIGO_SECCION" ColumnName="CODIGO_SECCION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CODIGO_TIPO_DATO" ColumnName="CODIGO_TIPO_DATO" />
+                <ScalarProperty Name="INDICADOR_PERMITE_MODIFICAR" ColumnName="INDICADOR_PERMITE_MODIFICAR" />
+                <ScalarProperty Name="INDICADOR_OBLIGATORIO" ColumnName="INDICADOR_OBLIGATORIO" />
+                <ScalarProperty Name="INDICADOR_SISTEMA" ColumnName="INDICADOR_SISTEMA" />
+                <ScalarProperty Name="CODIGO_PARAMETRO_RELACIONADO" ColumnName="CODIGO_PARAMETRO_RELACIONADO" />
+                <ScalarProperty Name="CODIGO_SECCION_RELACIONADO" ColumnName="CODIGO_SECCION_RELACIONADO" />
+                <ScalarProperty Name="CODIGO_SECCION_RELACIONADO_MOSTRAR" ColumnName="CODIGO_SECCION_RELACIONADO_MOSTRAR" />
+                <ScalarProperty Name="ESTADO_REGISTRO" ColumnName="ESTADO_REGISTRO" />
+                <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="TERMINAL_CREACION" ColumnName="TERMINAL_CREACION" />
+                <ScalarProperty Name="USUARIO_MODIFICACION" ColumnName="USUARIO_MODIFICACION" />
+                <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+                <ScalarProperty Name="TERMINAL_MODIFICACION" ColumnName="TERMINAL_MODIFICACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PARAMETRO_VALOR">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.PARAMETRO_VALOR">
+              <MappingFragment StoreEntitySet="PARAMETRO_VALOR">
+                <ScalarProperty Name="CODIGO_PARAMETRO" ColumnName="CODIGO_PARAMETRO" />
+                <ScalarProperty Name="CODIGO_SECCION" ColumnName="CODIGO_SECCION" />
+                <ScalarProperty Name="CODIGO_VALOR" ColumnName="CODIGO_VALOR" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+                <ScalarProperty Name="ESTADO_REGISTRO" ColumnName="ESTADO_REGISTRO" />
+                <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="TERMINAL_CREACION" ColumnName="TERMINAL_CREACION" />
+                <ScalarProperty Name="USUARIO_MODIFICACION" ColumnName="USUARIO_MODIFICACION" />
+                <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+                <ScalarProperty Name="TERMINAL_MODIFICACION" ColumnName="TERMINAL_MODIFICACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemAtributo">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.ItemAtributo">
+              <MappingFragment StoreEntitySet="ItemAtributo">
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="IdAtributo" ColumnName="IdAtributo" />
+                <ScalarProperty Name="IdDetalleRequerimiento" ColumnName="IdDetalleRequerimiento" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adjunto">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.Adjunto">
+              <MappingFragment StoreEntitySet="Adjunto">
+                <ScalarProperty Name="TamanioArchivo" ColumnName="TamanioArchivo" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="NombreArchivo" ColumnName="NombreArchivo" />
+                <ScalarProperty Name="Seccion" ColumnName="Seccion" />
+                <ScalarProperty Name="IdRequerimiento" ColumnName="IdRequerimiento" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolesAceptados">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.RolesAceptados">
+              <MappingFragment StoreEntitySet="RolesAceptados">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClaseONU">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.ClaseONU">
+              <MappingFragment StoreEntitySet="ClaseONU">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="IdFamiliaONU" ColumnName="IdFamiliaONU" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamiliaONU">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.FamiliaONU">
+              <MappingFragment StoreEntitySet="FamiliaONU">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="IdSegmentoONU" ColumnName="IdSegmentoONU" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SegmentoONU">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.SegmentoONU">
+              <MappingFragment StoreEntitySet="SegmentoONU">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleRequerimiento">
+            <EntityTypeMapping TypeName="STRACON_SGCOModel.DetalleRequerimiento">
+              <MappingFragment StoreEntitySet="DetalleRequerimiento">
+                <ScalarProperty Name="IdClaseOnu" ColumnName="IdClaseOnu" />
+                <ScalarProperty Name="IdFamiliaOnu" ColumnName="IdFamiliaOnu" />
+                <ScalarProperty Name="IdSegmentoOnu" ColumnName="IdSegmentoOnu" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdClase" ColumnName="IdClase" />
+                <ScalarProperty Name="IdGrupo" ColumnName="IdGrupo" />
+                <ScalarProperty Name="IdSegmento" ColumnName="IdSegmento" />
+                <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="GrupoArticulo" ColumnName="GrupoArticulo" />
+                <ScalarProperty Name="IdCategoriaValorizacion" ColumnName="IdCategoriaValorizacion" />
+                <ScalarProperty Name="IdTipoMaterial" ColumnName="IdTipoMaterial" />
+                <ScalarProperty Name="IdRequerimiento" ColumnName="IdRequerimiento" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

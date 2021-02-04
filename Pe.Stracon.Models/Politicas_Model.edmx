@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="STRACON_POLITICASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'STRACON_POLITICAS.GRL.PARAMETRO_SECCION' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="PARAMETRO_SECCION">
+          <Key>
+            <PropertyRef Name="CODIGO_PARAMETRO" />
+            <PropertyRef Name="CODIGO_SECCION" />
+            <PropertyRef Name="NOMBRE" />
+            <PropertyRef Name="CODIGO_TIPO_DATO" />
+            <PropertyRef Name="INDICADOR_PERMITE_MODIFICAR" />
+            <PropertyRef Name="INDICADOR_OBLIGATORIO" />
+            <PropertyRef Name="INDICADOR_SISTEMA" />
+            <PropertyRef Name="ESTADO_REGISTRO" />
+            <PropertyRef Name="USUARIO_CREACION" />
+            <PropertyRef Name="FECHA_CREACION" />
+            <PropertyRef Name="TERMINAL_CREACION" />
+          </Key>
+          <Property Name="CODIGO_PARAMETRO" Type="int" Nullable="false" />
+          <Property Name="CODIGO_SECCION" Type="int" Nullable="false" />
+          <Property Name="NOMBRE" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CODIGO_TIPO_DATO" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="INDICADOR_PERMITE_MODIFICAR" Type="bit" Nullable="false" />
+          <Property Name="INDICADOR_OBLIGATORIO" Type="bit" Nullable="false" />
+          <Property Name="INDICADOR_SISTEMA" Type="bit" Nullable="false" />
+          <Property Name="CODIGO_PARAMETRO_RELACIONADO" Type="int" />
+          <Property Name="CODIGO_SECCION_RELACIONADO" Type="int" />
+          <Property Name="CODIGO_SECCION_RELACIONADO_MOSTRAR" Type="int" />
+          <Property Name="ESTADO_REGISTRO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="USUARIO_CREACION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="datetime" Nullable="false" />
+          <Property Name="TERMINAL_CREACION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="USUARIO_MODIFICACION" Type="nvarchar" MaxLength="50" />
+          <Property Name="FECHA_MODIFICACION" Type="datetime" />
+          <Property Name="TERMINAL_MODIFICACION" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'STRACON_POLITICAS.GRL.PARAMETRO_VALOR' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="PARAMETRO_VALOR">
+          <Key>
+            <PropertyRef Name="CODIGO_PARAMETRO" />
+            <PropertyRef Name="CODIGO_SECCION" />
+            <PropertyRef Name="CODIGO_VALOR" />
+            <PropertyRef Name="ESTADO_REGISTRO" />
+            <PropertyRef Name="USUARIO_CREACION" />
+            <PropertyRef Name="FECHA_CREACION" />
+            <PropertyRef Name="TERMINAL_CREACION" />
+          </Key>
+          <Property Name="CODIGO_PARAMETRO" Type="int" Nullable="false" />
+          <Property Name="CODIGO_SECCION" Type="int" Nullable="false" />
+          <Property Name="CODIGO_VALOR" Type="int" Nullable="false" />
+          <Property Name="VALOR" Type="nvarchar(max)" />
+          <Property Name="ESTADO_REGISTRO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="USUARIO_CREACION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="datetime" Nullable="false" />
+          <Property Name="TERMINAL_CREACION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="USUARIO_MODIFICACION" Type="nvarchar" MaxLength="50" />
+          <Property Name="FECHA_MODIFICACION" Type="datetime" />
+          <Property Name="TERMINAL_MODIFICACION" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TRABAJADOR">
+          <Key>
+            <PropertyRef Name="CODIGO_TRABAJADOR" />
+          </Key>
+          <Property Name="CODIGO_TRABAJADOR" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DOMINIO" Type="nvarchar" MaxLength="50" />
+          <Property Name="CODIGO_IDENTIFICACION" Type="nvarchar" MaxLength="50" />
+          <Property Name="CODIGO_TIPO_DOCUMENTO_IDENTIDAD" Type="nvarchar" MaxLength="5" />
+          <Property Name="NUMERO_DOCUMENTO_IDENTIDAD" Type="nvarchar" MaxLength="15" />
+          <Property Name="APELLIDO_PATERNO" Type="nvarchar" MaxLength="50" />
+          <Property Name="APELLIDO_MATERNO" Type="nvarchar" MaxLength="50" />
+          <Property Name="NOMBRES" Type="nvarchar" MaxLength="50" />
+          <Property Name="NOMBRE_COMPLETO" Type="nvarchar" MaxLength="255" />
+          <Property Name="ORGANIZACION" Type="nvarchar" MaxLength="255" />
+          <Property Name="DEPARTAMENTO" Type="nvarchar" MaxLength="255" />
+          <Property Name="CARGO" Type="nvarchar" MaxLength="255" />
+          <Property Name="TELEFONO_TRABAJO" Type="nvarchar" MaxLength="50" />
+          <Property Name="ANEXO" Type="nvarchar" MaxLength="10" />
+          <Property Name="TELEFONO_MOVIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="TELEFONO_PERSONAL" Type="nvarchar" MaxLength="50" />
+          <Property Name="CORREO_ELECTRONICO" Type="nvarchar" MaxLength="50" />
+          <Property Name="INDICADOR_TODA_UNIDAD_OPERATIVA" Type="bit" Nullable="false" />
+          <Property Name="CODIGO_UNIDAD_OPERATIVA_MATRIZ" Type="uniqueidentifier" />
+          <Property Name="INDICADOR_TIENE_FOTO" Type="bit" Nullable="false" />
+          <Property Name="ESTADO_REGISTRO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="USUARIO_CREACION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="datetime" Nullable="false" />
+          <Property Name="TERMINAL_CREACION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="USUARIO_MODIFICACION" Type="nvarchar" MaxLength="50" />
+          <Property Name="FECHA_MODIFICACION" Type="datetime" />
+          <Property Name="TERMINAL_MODIFICACION" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="STRACON_POLITICASModelStoreContainer">
+          <EntitySet Name="TRABAJADOR" EntityType="Self.TRABAJADOR" Schema="GRL" store:Type="Tables" />
+          <EntitySet Name="PARAMETRO_SECCION" EntityType="Self.PARAMETRO_SECCION" store:Type="Tables" store:Schema="GRL">
+            <DefiningQuery>SELECT 
+    [PARAMETRO_SECCION].[CODIGO_PARAMETRO] AS [CODIGO_PARAMETRO], 
+    [PARAMETRO_SECCION].[CODIGO_SECCION] AS [CODIGO_SECCION], 
+    [PARAMETRO_SECCION].[NOMBRE] AS [NOMBRE], 
+    [PARAMETRO_SECCION].[CODIGO_TIPO_DATO] AS [CODIGO_TIPO_DATO], 
+    [PARAMETRO_SECCION].[INDICADOR_PERMITE_MODIFICAR] AS [INDICADOR_PERMITE_MODIFICAR], 
+    [PARAMETRO_SECCION].[INDICADOR_OBLIGATORIO] AS [INDICADOR_OBLIGATORIO], 
+    [PARAMETRO_SECCION].[INDICADOR_SISTEMA] AS [INDICADOR_SISTEMA], 
+    [PARAMETRO_SECCION].[CODIGO_PARAMETRO_RELACIONADO] AS [CODIGO_PARAMETRO_RELACIONADO], 
+    [PARAMETRO_SECCION].[CODIGO_SECCION_RELACIONADO] AS [CODIGO_SECCION_RELACIONADO], 
+    [PARAMETRO_SECCION].[CODIGO_SECCION_RELACIONADO_MOSTRAR] AS [CODIGO_SECCION_RELACIONADO_MOSTRAR], 
+    [PARAMETRO_SECCION].[ESTADO_REGISTRO] AS [ESTADO_REGISTRO], 
+    [PARAMETRO_SECCION].[USUARIO_CREACION] AS [USUARIO_CREACION], 
+    [PARAMETRO_SECCION].[FECHA_CREACION] AS [FECHA_CREACION], 
+    [PARAMETRO_SECCION].[TERMINAL_CREACION] AS [TERMINAL_CREACION], 
+    [PARAMETRO_SECCION].[USUARIO_MODIFICACION] AS [USUARIO_MODIFICACION], 
+    [PARAMETRO_SECCION].[FECHA_MODIFICACION] AS [FECHA_MODIFICACION], 
+    [PARAMETRO_SECCION].[TERMINAL_MODIFICACION] AS [TERMINAL_MODIFICACION]
+    FROM [GRL].[PARAMETRO_SECCION] AS [PARAMETRO_SECCION]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PARAMETRO_VALOR" EntityType="Self.PARAMETRO_VALOR" store:Type="Tables" store:Schema="GRL">
+            <DefiningQuery>SELECT 
+    [PARAMETRO_VALOR].[CODIGO_PARAMETRO] AS [CODIGO_PARAMETRO], 
+    [PARAMETRO_VALOR].[CODIGO_SECCION] AS [CODIGO_SECCION], 
+    [PARAMETRO_VALOR].[CODIGO_VALOR] AS [CODIGO_VALOR], 
+    [PARAMETRO_VALOR].[VALOR] AS [VALOR], 
+    [PARAMETRO_VALOR].[ESTADO_REGISTRO] AS [ESTADO_REGISTRO], 
+    [PARAMETRO_VALOR].[USUARIO_CREACION] AS [USUARIO_CREACION], 
+    [PARAMETRO_VALOR].[FECHA_CREACION] AS [FECHA_CREACION], 
+    [PARAMETRO_VALOR].[TERMINAL_CREACION] AS [TERMINAL_CREACION], 
+    [PARAMETRO_VALOR].[USUARIO_MODIFICACION] AS [USUARIO_MODIFICACION], 
+    [PARAMETRO_VALOR].[FECHA_MODIFICACION] AS [FECHA_MODIFICACION], 
+    [PARAMETRO_VALOR].[TERMINAL_MODIFICACION] AS [TERMINAL_MODIFICACION]
+    FROM [GRL].[PARAMETRO_VALOR] AS [PARAMETRO_VALOR]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="STRACON_POLITICASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TRABAJADOR">
+          <Key>
+            <PropertyRef Name="CODIGO_TRABAJADOR" />
+          </Key>
+          <Property Name="CODIGO_TRABAJADOR" Type="Guid" Nullable="false" />
+          <Property Name="DOMINIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CODIGO_IDENTIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CODIGO_TIPO_DOCUMENTO_IDENTIDAD" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="NUMERO_DOCUMENTO_IDENTIDAD" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="APELLIDO_PATERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="APELLIDO_MATERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NOMBRES" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NOMBRE_COMPLETO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ORGANIZACION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DEPARTAMENTO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CARGO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TELEFONO_TRABAJO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ANEXO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TELEFONO_MOVIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TELEFONO_PERSONAL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CORREO_ELECTRONICO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="INDICADOR_TODA_UNIDAD_OPERATIVA" Type="Boolean" Nullable="false" />
+          <Property Name="CODIGO_UNIDAD_OPERATIVA_MATRIZ" Type="Guid" />
+          <Property Name="INDICADOR_TIENE_FOTO" Type="Boolean" Nullable="false" />
+          <Property Name="ESTADO_REGISTRO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="USUARIO_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TERMINAL_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USUARIO_MODIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_MODIFICACION" Type="DateTime" Precision="3" />
+          <Property Name="TERMINAL_MODIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PARAMETRO_SECCION">
+          <Key>
+            <PropertyRef Name="CODIGO_PARAMETRO" />
+            <PropertyRef Name="CODIGO_SECCION" />
+            <PropertyRef Name="NOMBRE" />
+            <PropertyRef Name="CODIGO_TIPO_DATO" />
+            <PropertyRef Name="INDICADOR_PERMITE_MODIFICAR" />
+            <PropertyRef Name="INDICADOR_OBLIGATORIO" />
+            <PropertyRef Name="INDICADOR_SISTEMA" />
+            <PropertyRef Name="ESTADO_REGISTRO" />
+            <PropertyRef Name="USUARIO_CREACION" />
+            <PropertyRef Name="FECHA_CREACION" />
+            <PropertyRef Name="TERMINAL_CREACION" />
+          </Key>
+          <Property Name="CODIGO_PARAMETRO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_SECCION" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CODIGO_TIPO_DATO" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="INDICADOR_PERMITE_MODIFICAR" Type="Boolean" Nullable="false" />
+          <Property Name="INDICADOR_OBLIGATORIO" Type="Boolean" Nullable="false" />
+          <Property Name="INDICADOR_SISTEMA" Type="Boolean" Nullable="false" />
+          <Property Name="CODIGO_PARAMETRO_RELACIONADO" Type="Int32" />
+          <Property Name="CODIGO_SECCION_RELACIONADO" Type="Int32" />
+          <Property Name="CODIGO_SECCION_RELACIONADO_MOSTRAR" Type="Int32" />
+          <Property Name="ESTADO_REGISTRO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="USUARIO_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TERMINAL_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USUARIO_MODIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_MODIFICACION" Type="DateTime" Precision="3" />
+          <Property Name="TERMINAL_MODIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PARAMETRO_VALOR">
+          <Key>
+            <PropertyRef Name="CODIGO_PARAMETRO" />
+            <PropertyRef Name="CODIGO_SECCION" />
+            <PropertyRef Name="CODIGO_VALOR" />
+            <PropertyRef Name="ESTADO_REGISTRO" />
+            <PropertyRef Name="USUARIO_CREACION" />
+            <PropertyRef Name="FECHA_CREACION" />
+            <PropertyRef Name="TERMINAL_CREACION" />
+          </Key>
+          <Property Name="CODIGO_PARAMETRO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_SECCION" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_VALOR" Type="Int32" Nullable="false" />
+          <Property Name="VALOR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ESTADO_REGISTRO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="USUARIO_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TERMINAL_CREACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USUARIO_MODIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_MODIFICACION" Type="DateTime" Precision="3" />
+          <Property Name="TERMINAL_MODIFICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="STRACON_POLITICASEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TRABAJADOR" EntityType="Self.TRABAJADOR" />
+          <EntitySet Name="PARAMETRO_SECCION" EntityType="Self.PARAMETRO_SECCION" />
+          <EntitySet Name="PARAMETRO_VALOR" EntityType="Self.PARAMETRO_VALOR" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="STRACON_POLITICASModelStoreContainer" CdmEntityContainer="STRACON_POLITICASEntities">
+          <EntitySetMapping Name="TRABAJADOR">
+            <EntityTypeMapping TypeName="STRACON_POLITICASModel.TRABAJADOR">
+              <MappingFragment StoreEntitySet="TRABAJADOR">
+                <ScalarProperty Name="CODIGO_TRABAJADOR" ColumnName="CODIGO_TRABAJADOR" />
+                <ScalarProperty Name="DOMINIO" ColumnName="DOMINIO" />
+                <ScalarProperty Name="CODIGO_IDENTIFICACION" ColumnName="CODIGO_IDENTIFICACION" />
+                <ScalarProperty Name="CODIGO_TIPO_DOCUMENTO_IDENTIDAD" ColumnName="CODIGO_TIPO_DOCUMENTO_IDENTIDAD" />
+                <ScalarProperty Name="NUMERO_DOCUMENTO_IDENTIDAD" ColumnName="NUMERO_DOCUMENTO_IDENTIDAD" />
+                <ScalarProperty Name="APELLIDO_PATERNO" ColumnName="APELLIDO_PATERNO" />
+                <ScalarProperty Name="APELLIDO_MATERNO" ColumnName="APELLIDO_MATERNO" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="NOMBRE_COMPLETO" ColumnName="NOMBRE_COMPLETO" />
+                <ScalarProperty Name="ORGANIZACION" ColumnName="ORGANIZACION" />
+                <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+                <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+                <ScalarProperty Name="TELEFONO_TRABAJO" ColumnName="TELEFONO_TRABAJO" />
+                <ScalarProperty Name="ANEXO" ColumnName="ANEXO" />
+                <ScalarProperty Name="TELEFONO_MOVIL" ColumnName="TELEFONO_MOVIL" />
+                <ScalarProperty Name="TELEFONO_PERSONAL" ColumnName="TELEFONO_PERSONAL" />
+                <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
+                <ScalarProperty Name="INDICADOR_TODA_UNIDAD_OPERATIVA" ColumnName="INDICADOR_TODA_UNIDAD_OPERATIVA" />
+                <ScalarProperty Name="CODIGO_UNIDAD_OPERATIVA_MATRIZ" ColumnName="CODIGO_UNIDAD_OPERATIVA_MATRIZ" />
+                <ScalarProperty Name="INDICADOR_TIENE_FOTO" ColumnName="INDICADOR_TIENE_FOTO" />
+                <ScalarProperty Name="ESTADO_REGISTRO" ColumnName="ESTADO_REGISTRO" />
+                <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="TERMINAL_CREACION" ColumnName="TERMINAL_CREACION" />
+                <ScalarProperty Name="USUARIO_MODIFICACION" ColumnName="USUARIO_MODIFICACION" />
+                <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+                <ScalarProperty Name="TERMINAL_MODIFICACION" ColumnName="TERMINAL_MODIFICACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PARAMETRO_SECCION">
+            <EntityTypeMapping TypeName="STRACON_POLITICASModel.PARAMETRO_SECCION">
+              <MappingFragment StoreEntitySet="PARAMETRO_SECCION">
+                <ScalarProperty Name="CODIGO_PARAMETRO" ColumnName="CODIGO_PARAMETRO" />
+                <ScalarProperty Name="CODIGO_SECCION" ColumnName="CODIGO_SECCION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CODIGO_TIPO_DATO" ColumnName="CODIGO_TIPO_DATO" />
+                <ScalarProperty Name="INDICADOR_PERMITE_MODIFICAR" ColumnName="INDICADOR_PERMITE_MODIFICAR" />
+                <ScalarProperty Name="INDICADOR_OBLIGATORIO" ColumnName="INDICADOR_OBLIGATORIO" />
+                <ScalarProperty Name="INDICADOR_SISTEMA" ColumnName="INDICADOR_SISTEMA" />
+                <ScalarProperty Name="CODIGO_PARAMETRO_RELACIONADO" ColumnName="CODIGO_PARAMETRO_RELACIONADO" />
+                <ScalarProperty Name="CODIGO_SECCION_RELACIONADO" ColumnName="CODIGO_SECCION_RELACIONADO" />
+                <ScalarProperty Name="CODIGO_SECCION_RELACIONADO_MOSTRAR" ColumnName="CODIGO_SECCION_RELACIONADO_MOSTRAR" />
+                <ScalarProperty Name="ESTADO_REGISTRO" ColumnName="ESTADO_REGISTRO" />
+                <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="TERMINAL_CREACION" ColumnName="TERMINAL_CREACION" />
+                <ScalarProperty Name="USUARIO_MODIFICACION" ColumnName="USUARIO_MODIFICACION" />
+                <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+                <ScalarProperty Name="TERMINAL_MODIFICACION" ColumnName="TERMINAL_MODIFICACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PARAMETRO_VALOR">
+            <EntityTypeMapping TypeName="STRACON_POLITICASModel.PARAMETRO_VALOR">
+              <MappingFragment StoreEntitySet="PARAMETRO_VALOR">
+                <ScalarProperty Name="CODIGO_PARAMETRO" ColumnName="CODIGO_PARAMETRO" />
+                <ScalarProperty Name="CODIGO_SECCION" ColumnName="CODIGO_SECCION" />
+                <ScalarProperty Name="CODIGO_VALOR" ColumnName="CODIGO_VALOR" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+                <ScalarProperty Name="ESTADO_REGISTRO" ColumnName="ESTADO_REGISTRO" />
+                <ScalarProperty Name="USUARIO_CREACION" ColumnName="USUARIO_CREACION" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="TERMINAL_CREACION" ColumnName="TERMINAL_CREACION" />
+                <ScalarProperty Name="USUARIO_MODIFICACION" ColumnName="USUARIO_MODIFICACION" />
+                <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+                <ScalarProperty Name="TERMINAL_MODIFICACION" ColumnName="TERMINAL_MODIFICACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

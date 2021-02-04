@@ -1,0 +1,32 @@
+﻿/*===============LOGIN==============*/
+
+.contenedor-principal-login {
+    min-height: 100vh !important;
+    height: 100vh !important;
+    background-color: #313131 !important;
+}
+
+.custom-file-label::after {
+    content: "Buscar" !important;
+}
+
+#opcionesUsuario {
+    cursor: pointer;
+}
+
+/*#modalDetalle {
+    z-index: 1051;
+}*/
+
+.modal.show:nth-of-type(odd) {
+    z-index: 1052 !important;
+}
+
+.modal-backdrop.show:nth-of-type(odd) {
+    z-index: 1051 !important;
+}
+
+.btnLogin {
+    width: 100% !important;
+    border-radius: 0.4em !important;
+}
